@@ -41,7 +41,7 @@
     countdownMode = mode;
     countdown.className = `footer-date countdown is-${mode}`;
     if (mode === 'before') {
-      countdown.innerHTML = `<span class="cd-label" aria-hidden="true">${i18n.t('CÒN')} <i>·</i> ${i18n.t('ĐẾN 20.12.2026')}</span><span class="cd-row" aria-hidden="true">${UNITS.map(([key, label]) => `<span class="cd-unit"><b data-unit="${key}">00</b><small>${i18n.t(label)}</small></span>`).join('')}</span>`;
+      countdown.innerHTML = `<span class="cd-row" aria-hidden="true">${UNITS.map(([key, label]) => `<span class="cd-unit"><b data-unit="${key}">00</b><small>${i18n.t(label)}</small></span>`).join('')}</span>`;
       countdown.setAttribute('role', 'timer');
     } else {
       countdown.removeAttribute('role');
