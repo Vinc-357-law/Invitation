@@ -1,9 +1,13 @@
-# Aristia · A Little Christmas Miracle
+# Thiệp thôi nôi Hà Linh
 
-Buildless HTML, CSS and JavaScript invitation. Serve `dist/` with a static HTTP server.
+Thiệp mời online: https://schizophren-ia.github.io/Invitation/
 
-Interaction: sleigh / receive button → envelope delivery → tap snowflake seal → cracking wax, opening flap and sliding invitation. Keyboard accessible with modal focus management, reduced motion support and persistent animated snow. The calendar download uses 20 December 2026 at 18:00 GMT+7. Map opens the supplied venue search.
+HTML, CSS và JavaScript thuần, không cần build. Nội dung website nằm trong `dist/`.
 
-Music is an original synthesized winter jazz demo, not a recording of “Let It Snow”. A licensed recording of the requested track has not been supplied. No RSVP information is collected.
+Khách xác nhận tham dự ngay trong thiệp. Phản hồi được gửi đến Google Apps Script để lưu vào bảng theo dõi của gia đình.
 
-Background: generated using the built-in ImageGen tool. See `art-direction.md` for the final prompt.
+Nhạc nền: `Snowflakes_on_the_Cake.mp3`, do chủ thiệp cung cấp. Nhạc phát sau tương tác đầu tiên và có nút bật/tắt.
+
+## Cập nhật website
+
+Đẩy thay đổi trong `dist/` lên nhánh `main`. GitHub Actions tự xuất bản GitHub Pages; có thể chạy lại từ thẻ Actions bằng workflow `Publish invitation`.

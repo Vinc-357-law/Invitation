@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <!-- Ivory cotton card with a hand-torn (deckled) edge. No viewBox on purpose:
+       the drawing is laid out in real pixels at whatever size the card has, so it never stretches. -->
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2=".35" y2="1">
+      <stop offset="0" stop-color="#fdf9f1"/>
+      <stop offset=".55" stop-color="#f8efe1"/>
+      <stop offset="1" stop-color="#f0e3cf"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".32" cy=".22" r=".95">
+      <stop offset="0" stop-color="#fffdf8" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#fffdf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="edge" cx=".5" cy=".5" r=".75">
+      <stop offset=".72" stop-color="#b48a5c" stop-opacity="0"/>
+      <stop offset="1" stop-color="#b48a5c" stop-opacity=".16"/>
+    </radialGradient>
+    <mask id="inset">
+      <rect width="100%" height="100%" fill="#fff" stroke="#000" stroke-width="16"/>
+    </mask>
+    <filter id="deckle" x="-3%" y="-3%" width="106%" height="106%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".07" numOctaves="4" seed="4" result="edgeNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="edgeNoise" scale="7" xChannelSelector="R" yChannelSelector="G" result="torn"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="9" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 .42  0 0 0 0 .32  0 0 0 0 .22  0 0 0 .12 -.02" result="grainTint"/>
+      <feComposite in="grainTint" in2="torn" operator="in" result="grainOnPaper"/>
+      <feTurbulence type="fractalNoise" baseFrequency=".012 .05" numOctaves="2" seed="2" result="fibre"/>
+      <feColorMatrix in="fibre" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .22 -.08" result="fibreTint"/>
+      <feComposite in="fibreTint" in2="torn" operator="in" result="fibreOnPaper"/>
+      <feMerge><feMergeNode in="torn"/><feMergeNode in="grainOnPaper"/><feMergeNode in="fibreOnPaper"/></feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#deckle)">
+    <g mask="url(#inset)">
+      <rect width="100%" height="100%" fill="url(#fill)"/>
+      <rect width="100%" height="100%" fill="url(#glow)"/>
+      <rect width="100%" height="100%" fill="url(#edge)"/>
+    </g>
+  </g>
+</svg>

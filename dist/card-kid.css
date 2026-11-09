@@ -1,0 +1,200 @@
+/* ---------- The invitation sheet: the pink first-birthday poster ----------
+   The artwork is designed on a 1080 × 1920 canvas. --u is 1/1080 of the card's width, so every
+   position and font size below is a canvas number and the poster scales as one piece on any screen. */
+.card-scene{container-type:inline-size;width:min(400px,100%)}
+.invitation.kid-card{
+  --u:calc(100cqw / 1080);
+  --ink:#8a2f52;--berry:#c93a6c;--berry-2:#a92a56;--cream:#fff8f3;--blush:#fbd5e0;
+  position:relative;isolation:isolate;overflow:hidden;
+  width:100%;aspect-ratio:1080 / 1920;padding:0;margin:0;
+  border:0;border-image:none;border-radius:calc(56 * var(--u));
+  background:#fce1e9;color:var(--ink);text-align:left;text-shadow:none;
+  font-family:'Baloo 2',system-ui,sans-serif;
+  filter:none;box-shadow:0 14px 34px rgba(40,12,30,.45);
+}
+.invitation.kid-card::before,.invitation.kid-card::after{display:none}
+.invitation.kid-card:focus{outline:none}
+.invitation.kid-card p,.invitation.kid-card h2{margin:0;letter-spacing:0}
+
+/* Illustrations: each carries its own canvas position in --x --y --w --h. */
+.kc-art{position:absolute;left:calc(var(--x) * var(--u));top:calc(var(--y) * var(--u));width:calc(var(--w) * var(--u));height:calc(var(--h) * var(--u));pointer-events:none}
+.kc-icon{flex:none;width:calc(var(--w) * var(--u));height:calc(var(--h) * var(--u))}
+
+/* Words */
+.kc-num{font-family:'Cherry Bomb One','Baloo 2',sans-serif;font-weight:400}
+.invitation.kid-card .kc-invite,.invitation.kid-card h2,.kc-name{position:absolute;left:0;width:100%;text-align:center}
+.invitation.kid-card .kc-invite{top:calc(186 * var(--u));font:600 calc(44 * var(--u))/calc(60 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.invitation.kid-card h2{top:calc(240 * var(--u));font:800 calc(116 * var(--u))/calc(130 * var(--u)) 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+html[lang=en] .invitation.kid-card h2{font-size:calc(100 * var(--u))}
+
+.kc-name{top:calc(400 * var(--u));display:flex;justify-content:center;align-items:flex-end;gap:calc(6 * var(--u));
+  font:400 calc(236 * var(--u))/1 'Cherry Bomb One','Baloo 2',sans-serif;color:var(--berry);
+  --s7:calc(7 * var(--u));--s9:calc(9 * var(--u));
+  text-shadow:0 var(--s9) 0 #fff,var(--s9) 0 0 #fff,calc(-1 * var(--s9)) 0 0 #fff,0 calc(-1 * var(--s9)) 0 #fff,var(--s7) var(--s7) 0 #fff,calc(-1 * var(--s7)) var(--s7) 0 #fff,var(--s7) calc(-1 * var(--s7)) 0 #fff,calc(-1 * var(--s7)) calc(-1 * var(--s7)) 0 #fff,0 calc(18 * var(--u)) 0 #f3afc3}
+.kc-name span{position:relative;display:inline-block;transform:rotate(var(--r)) translateY(calc(var(--d) * var(--u)))}
+.kc-name .kc-word{margin-left:calc(44 * var(--u))}
+.kc-hat{position:absolute;left:50%;top:calc(-52 * var(--u));width:calc(160 * var(--u));height:calc(130 * var(--u));margin-left:calc(-80 * var(--u))}
+
+.kc-age{position:absolute;left:calc(260 * var(--u));top:calc(640 * var(--u));width:calc(560 * var(--u));height:calc(76 * var(--u));border-radius:calc(38 * var(--u));background:var(--berry);color:var(--cream);display:flex;align-items:center;justify-content:center;gap:calc(18 * var(--u));font:800 calc(46 * var(--u))/calc(76 * var(--u)) 'Baloo 2',system-ui,sans-serif;transform:rotate(-2deg)}
+
+.kc-pill{position:absolute;top:calc(1150 * var(--u));width:calc(315 * var(--u));height:calc(200 * var(--u));border-radius:calc(40 * var(--u));background:var(--blush);display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 calc(42 * var(--u))/calc(52 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.kc-pill-l{left:calc(70 * var(--u));transform:rotate(-3deg)}
+.kc-pill-r{left:calc(695 * var(--u));transform:rotate(3deg)}
+.kc-pill .kc-num{font-size:calc(90 * var(--u));line-height:calc(104 * var(--u));color:var(--berry-2)}
+
+.kc-date{position:absolute;left:calc(405 * var(--u));top:calc(1115 * var(--u));width:calc(270 * var(--u));height:calc(270 * var(--u));border-radius:50%;background:var(--berry);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 calc(42 * var(--u))/calc(50 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.kc-date .kc-num{font-size:calc(132 * var(--u));line-height:calc(124 * var(--u))}
+
+.kc-venue{position:absolute;left:calc(70 * var(--u));top:calc(1415 * var(--u));width:calc(940 * var(--u));height:calc(320 * var(--u));box-sizing:border-box;border-radius:calc(48 * var(--u));background:var(--blush);padding:calc(14 * var(--u))}
+.kc-venue-in{height:100%;box-sizing:border-box;border:calc(5 * var(--u)) dashed #fff;border-radius:calc(36 * var(--u));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:600 calc(42 * var(--u))/calc(54 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.kc-venue-name{display:flex;align-items:center;justify-content:center;gap:calc(14 * var(--u));font-size:calc(72 * var(--u));line-height:calc(84 * var(--u));font-weight:800}
+.kc-venue-sub{font-size:calc(50 * var(--u));line-height:calc(62 * var(--u));font-weight:700;color:var(--berry-2)}
+
+.invitation.kid-card .kc-close{position:absolute;left:calc(160 * var(--u));top:calc(1766 * var(--u));width:calc(760 * var(--u));text-align:center;font:600 calc(40 * var(--u))/calc(54 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+
+/* The poster has no room for controls, so the RSVP and map buttons sit just under it. */
+.card-scene .card-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
+.extracting-card .card-actions{visibility:hidden}
+.card-scene .card-actions #rsvp-open,.card-scene .card-actions a{width:auto;min-height:46px;margin:0;display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;font:700 16px/1 'Baloo 2',system-ui,sans-serif;letter-spacing:0;box-shadow:0 4px 12px rgba(40,12,30,.35);transition:transform .15s,background .2s}
+.card-scene .card-actions #rsvp-open{padding:0 24px;background:#c93a6c;color:#fff8f3}
+.card-scene .card-actions #rsvp-open:hover{background:#d9527f}
+.card-scene .card-actions a{padding:0 20px;background:#fff8f3;color:#8a2f52}
+.card-scene .card-actions a:hover{background:#fff}
+.card-scene .card-actions #rsvp-open:active,.card-scene .card-actions a:active{transform:scale(.97)}
+.card-scene .card-actions a span{margin-left:0}
+
+/* ---------- The envelope: cream paper, a striped airmail border and a reindeer stamp ----------
+   Drawn on a 900 × 1360 canvas. Its layers are stacked directly against the card, not grouped,
+   because the card has to pass between the envelope's back and its front pocket on the way out. */
+.kid-envelope{--w:max(220px,min(88vw,400px,calc((100svh - 216px) / 1.511)));position:relative;width:var(--w);height:calc(var(--w) * 1.5111)}
+.ke-back,.ke-flap,.ke-front,.ke-seal{position:absolute}
+.ke-back{inset:0;z-index:1;border-radius:0 0 calc(var(--w) * .04) calc(var(--w) * .04);background:#fce1e9;box-shadow:0 calc(var(--w) * .02) 0 #2e6350}
+.ke-back svg{display:block;width:100%;height:auto}
+.ke-flap{left:0;top:0;width:100%;height:32.353%;z-index:5;perspective:calc(var(--w) * 2.67);perspective-origin:50% 0}
+.ke-flap-in{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 0;transition:transform .8s ease-in-out}
+.ke-face{position:absolute;inset:0;display:block;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ke-face-in{transform:rotateX(180deg)}
+.ke-front{inset:0;z-index:4;display:block;width:100%;height:100%}
+.ke-seal{left:37.778%;top:23.529%;width:24.444%;aspect-ratio:1;z-index:6;transition:transform .4s ease,opacity .3s ease}
+.ke-seal svg{display:block;width:100%;height:100%;animation:ke-wiggle 2.4s ease-in-out infinite}
+@keyframes ke-wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.kid-envelope.opening .ke-flap-in{transform:rotateX(180deg)}
+.kid-envelope.opening .ke-flap{z-index:2;transition:z-index 0s .4s}
+.kid-envelope.opening .ke-seal{opacity:0;transform:scale(.4)}
+.extracting-card{position:relative;z-index:3}
+
+.kid-envelope.falling-letter{--w:104px;position:fixed;z-index:12;pointer-events:none;animation:letter-fall 1.25s cubic-bezier(.42,.08,.45,1) forwards,letter-appear .3s ease-out both;will-change:transform}
+.falling-letter .ke-seal svg{animation:none}
+
+.envelope-scene .envelope-heading{margin:0 0 clamp(12px,2.4vh,22px);max-width:12.2em;text-align:center;font:800 clamp(22px,6.2vw,32px)/1.18 'Baloo 2',system-ui,sans-serif;letter-spacing:0;color:#fff8f3;animation-delay:.2s}
+
+/* Keep the original moonlit landscape visible behind every invitation step. */
+.overlay{scrollbar-gutter:stable}
+.overlay.revealing{overflow:hidden} /* the envelope slides off the bottom edge */
+.overlay::before{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.world.delivered .intro,.world.delivered .invitation-cue,.world.delivered .footer,.world.delivered .steps{opacity:0;pointer-events:none}
+.world[inert] .header,.world[inert] .intro,.world[inert] .invitation-cue,.world[inert] .footer,.world[inert] .steps,.world[inert] .sleigh-flight{visibility:hidden}
+.overlay .ke-sky,.overlay .ke-lights,.overlay .ke-ground{display:none}
+.ke-sky{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.ke-sky i{position:absolute;top:0;left:var(--x);width:calc(var(--s) * min(100vw,640px) / 1080);aspect-ratio:1;border-radius:50%;background:#fff8f3;animation:ke-fall var(--d) linear var(--t) infinite;will-change:transform}
+@keyframes ke-fall{from{transform:translateY(-40px)}to{transform:translateY(calc(100vh + 40px))}}
+.ke-lights{position:absolute;inset:0 0 auto;height:clamp(40px,7.5vh,96px);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='110' viewBox='0 0 1080 110'%3E%3Cpath d='M0 34Q135 90 270 34T540 34T810 34T1080 34' fill='none' stroke='%2324513f' stroke-width='5'/%3E%3Cg fill='%2324513f'%3E%3Crect x='60' y='51' width='14' height='12' rx='3'/%3E%3Crect x='195' y='53' width='14' height='12' rx='3'/%3E%3Crect x='330' y='11' width='14' height='12' rx='3'/%3E%3Crect x='465' y='11' width='14' height='12' rx='3'/%3E%3Crect x='600' y='51' width='14' height='12' rx='3'/%3E%3Crect x='735' y='53' width='14' height='12' rx='3'/%3E%3Crect x='870' y='11' width='14' height='12' rx='3'/%3E%3Crect x='1005' y='11' width='14' height='12' rx='3'/%3E%3C/g%3E%3Cellipse cx='67' cy='78' rx='13' ry='18' fill='%23d9485a'/%3E%3Cellipse cx='202' cy='80' rx='13' ry='18' fill='%23f6cd6b'/%3E%3Cellipse cx='337' cy='38' rx='13' ry='18' fill='%23fff8f3'/%3E%3Cellipse cx='472' cy='38' rx='13' ry='18' fill='%23d9485a'/%3E%3Cellipse cx='607' cy='78' rx='13' ry='18' fill='%23f6cd6b'/%3E%3Cellipse cx='742' cy='80' rx='13' ry='18' fill='%23fff8f3'/%3E%3Cellipse cx='877' cy='38' rx='13' ry='18' fill='%23d9485a'/%3E%3Cellipse cx='1012' cy='38' rx='13' ry='18' fill='%23f6cd6b'/%3E%3C/svg%3E") center top/auto 100% repeat-x}
+.ke-ground{position:absolute;left:0;bottom:0;display:block;width:100%;height:clamp(64px,10vh,130px)}
+/* The drift sinks with the envelope, leaving the original landscape around the card. */
+.overlay.revealing .ke-ground{transform:translateY(100%);transition:transform .9s ease-in 2s}
+.overlay:has(#envelope-scene[hidden]) .ke-ground{transform:translateY(100%)}
+.overlay .close{background:#17283bed}
+.overlay .close:hover{background:#263b53}
+@media(prefers-reduced-motion:reduce){.ke-sky i{display:none}.ke-seal svg{animation:none}.kid-envelope.falling-letter{display:none}}
+
+/* ---------- The guest pages (RSVP, calendar, game), dressed like the poster ----------
+   The illustrations are copied from the poster by card-kid.js. Page heights change with the content,
+   so the content stays in normal flow and the scenery is pinned to the top and bottom edges.
+   --u is declared here but resolves where it is used, against this panel as the container, which
+   is why padding that depends on it sits on .kp-body rather than on the panel. */
+.guest-panel.kid-panel{
+  --u:calc(100cqw / 1080);
+  --ink:#8a2f52;--berry:#c93a6c;--berry-2:#a92a56;--cream:#fff8f3;--blush:#fbd5e0;
+  container-type:inline-size;width:min(400px,100%);padding:0;overflow:hidden;
+  border-radius:20px;background:#fce1e9;color:var(--ink);
+  filter:none;box-shadow:0 14px 34px rgba(40,12,30,.45);
+  font-family:'Baloo 2',system-ui,sans-serif;
+}
+.guest-panel.kid-panel::before,.guest-panel.kid-panel::after{display:none}
+.kp-art{position:absolute;left:0;width:100%;height:auto;z-index:0;pointer-events:none}
+.kp-snow{top:0;aspect-ratio:1080 / 1000}
+.kp-icing{top:0;aspect-ratio:1080 / 170}
+.kp-baubles{top:0;aspect-ratio:1080 / 280}
+.kp-ground{bottom:0;aspect-ratio:1080 / 940}
+.kp-tree{left:calc(22 * var(--u));bottom:calc(14 * var(--u));width:calc(130 * var(--u));aspect-ratio:130 / 150}
+.kp-gift{left:auto;right:calc(20 * var(--u));bottom:calc(14 * var(--u));width:calc(135 * var(--u));aspect-ratio:135 / 140}
+.kp-hero{display:block;height:calc(255 * var(--u));margin:0 auto calc(8 * var(--u));pointer-events:none}
+
+.guest-panel.kid-panel .kp-body{position:relative;z-index:1;padding:calc(110 * var(--u)) calc(58 * var(--u)) calc(22 * var(--u))}
+.guest-panel.kid-panel .guest-kicker{width:fit-content;margin:0 auto calc(8 * var(--u));padding:calc(6 * var(--u)) calc(34 * var(--u));display:flex;align-items:center;gap:calc(14 * var(--u));border-radius:999px;background:var(--berry);color:var(--cream);font:800 13px/1.5 'Baloo 2',system-ui,sans-serif;letter-spacing:.02em;transform:rotate(-2deg)}
+.guest-panel.kid-panel .guest-kicker::before,.guest-panel.kid-panel .guest-kicker::after{content:'✦';color:#f6cd6b;font-size:12px}
+.guest-panel.kid-panel h2{font:800 calc(104 * var(--u))/1.2 'Baloo 2',system-ui,sans-serif;color:var(--ink);text-align:center}
+.guest-panel.kid-panel .rsvp-note{margin:0 0 calc(26 * var(--u));font:600 13px/1.45 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+
+.kp-box,.guest-panel.kid-panel .game-grid,.guest-panel.kid-panel .game-results{border-radius:20px;background:var(--blush);outline:2px dashed #fff;outline-offset:-7px}
+.kp-box{padding:18px 16px 16px}
+.guest-panel.kid-panel .rsvp-name,.guest-panel.kid-panel .rsvp-counts label,.guest-panel.kid-panel .rsvp-options legend{font:700 14.5px/1.35 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+.guest-panel.kid-panel .rsvp-name{gap:4px;margin-bottom:12px}
+.guest-panel.kid-panel .rsvp-options legend{margin-bottom:6px}
+.guest-panel.kid-panel .rsvp-counts{margin-top:12px}
+.guest-panel.kid-panel .rsvp-counts label{gap:4px}
+.guest-panel.kid-panel .rsvp-name input,.guest-panel.kid-panel .rsvp-counts input{min-height:46px;padding:6px 14px;border:2px solid #f8c6d5;border-radius:16px;background:#fff;color:var(--ink);font:600 16px 'Baloo 2',system-ui,sans-serif}
+.guest-panel.kid-panel .rsvp-name input:focus,.guest-panel.kid-panel .rsvp-counts input:focus{border-color:var(--berry)}
+.guest-panel.kid-panel .rsvp-options label{min-height:46px;padding:6px 12px;border:2px solid #f8c6d5;border-radius:999px;background:#fff;color:var(--ink);font:700 15px/1.2 'Baloo 2',system-ui,sans-serif;transition:background .2s,border-color .2s}
+.guest-panel.kid-panel .rsvp-options label:has(:checked){border-color:var(--berry);background:#ffe9f0}
+.guest-panel.kid-panel .rsvp input[type=radio]{accent-color:var(--berry)}
+.guest-panel.kid-panel .rsvp-submit{min-height:50px;margin:14px 0 0;border-radius:999px;background:var(--berry);color:var(--cream);font:800 17px/1.2 'Baloo 2',system-ui,sans-serif;box-shadow:0 4px 12px rgba(138,47,82,.32)}
+.guest-panel.kid-panel .rsvp-submit:hover{background:#d9527f}
+.guest-panel.kid-panel .guest-back{margin-top:6px;color:var(--ink);font:700 14.5px 'Baloo 2',system-ui,sans-serif}
+.guest-panel.kid-panel :is(button,input,a):focus-visible{outline:2px solid var(--berry);outline-offset:2px}
+
+/* Calendar */
+.guest-panel.kid-panel.calendar-panel h2{font:400 calc(112 * var(--u))/1.15 'Cherry Bomb One','Baloo 2',sans-serif;color:var(--berry)}
+.guest-panel.kid-panel .calendar-details{margin:0 0 calc(26 * var(--u));font:700 15px/1.4 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+.guest-panel.kid-panel .kp-box:has(.event-calendar){padding:14px 14px 10px}
+.guest-panel.kid-panel .event-calendar{font:600 14px 'Baloo 2',system-ui,sans-serif}
+.guest-panel.kid-panel .event-calendar caption{margin-bottom:4px;font:800 18px/1.3 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+.guest-panel.kid-panel .event-calendar th{height:30px;border-bottom:2px dashed #fff;font:700 12.5px 'Baloo 2',system-ui,sans-serif;color:var(--berry-2)}
+.guest-panel.kid-panel .event-calendar td{color:var(--ink)}
+.guest-panel.kid-panel .event-day{background:var(--berry);color:var(--cream);font-weight:800;box-shadow:0 0 0 3px #fff}
+.guest-panel.kid-panel .rsvp-result{margin-top:12px;font:700 14px/1.4 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+.guest-panel.kid-panel .calendar-actions{margin-top:14px}
+.guest-panel.kid-panel .calendar-actions a.rsvp-submit{min-height:48px;margin:0;padding:6px 8px;font:800 14.5px/1.15 'Baloo 2',system-ui,sans-serif;letter-spacing:0}
+.guest-panel.kid-panel .calendar-actions a.rsvp-submit:nth-child(2){background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px #f8c6d5}
+.guest-panel.kid-panel .calendar-actions a.rsvp-submit:nth-child(2):hover{background:#ffe9f0}
+.guest-panel.kid-panel .game-open-panel{min-height:46px;margin-top:10px;border:2px solid #f8c6d5;border-radius:999px;background:#fff;color:var(--ink);font:700 15px/1.2 'Baloo 2',system-ui,sans-serif;letter-spacing:0}
+.guest-panel.kid-panel .game-open-panel:hover{background:#ffe9f0}
+.guest-panel.kid-panel .game-open-panel span{color:var(--berry)}
+
+/* Game */
+.guest-panel.kid-panel.game-panel h2{font-size:calc(92 * var(--u));text-wrap:balance}
+.guest-panel.kid-panel .game-intro{margin:calc(6 * var(--u)) 0 calc(26 * var(--u));font:600 14px/1.45 'Baloo 2',system-ui,sans-serif;color:var(--ink);text-wrap:balance}
+.guest-panel.kid-panel .game-grid{padding:14px 12px;gap:7px}
+.guest-panel.kid-panel .game-item{border:2px solid #f8c6d5;border-radius:16px;background:#fff;color:var(--ink);font-family:'Baloo 2',system-ui,sans-serif}
+.guest-panel.kid-panel .game-item svg{stroke:var(--berry);stroke-width:1.8}
+.guest-panel.kid-panel .game-item b{font-family:inherit;font-weight:700}
+.guest-panel.kid-panel .game-item small{font-family:inherit;font-weight:600;color:var(--berry-2)}
+.guest-panel.kid-panel .game-item:hover{border-color:#e56a92;background:#fff4f7}
+.guest-panel.kid-panel .game-item[aria-pressed=true]{border-color:var(--berry);background:#ffe9f0;box-shadow:none}
+.guest-panel.kid-panel .game-results{margin-top:0;padding:16px 16px 8px}
+.guest-panel.kid-panel .game-pick{margin:0 0 10px;font:700 18px/1.35 'Baloo 2',system-ui,sans-serif;color:var(--ink);text-wrap:balance}
+.guest-panel.kid-panel .game-pick b{font-weight:800;color:var(--berry)}
+.guest-panel.kid-panel .game-bars li{font:600 13px 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+.guest-panel.kid-panel .game-bars li.mine{font-weight:800;color:var(--berry-2)}
+.guest-panel.kid-panel .gb-track{height:10px;background:#fff}
+.guest-panel.kid-panel .gb-track i{background:linear-gradient(90deg,#f3afc3,#e56a92)}
+.guest-panel.kid-panel .game-bars li.mine .gb-track i{background:linear-gradient(90deg,#e56a92,var(--berry))}
+.guest-panel.kid-panel .game-note{font:600 13px/1.45 'Baloo 2',system-ui,sans-serif;color:var(--ink)}
+.guest-panel.kid-panel .game-change{margin-top:2px;font-size:14px;text-decoration:underline;text-underline-offset:3px}
+html[lang=en] .guest-panel.kid-panel .game-item b{font-size:12px}
+@media(max-width:420px){
+  .guest-panel.kid-panel .game-grid{padding:12px 9px;gap:5px}
+  html[lang=en] .guest-panel.kid-panel .game-item b{font-size:11px}
+}
+/* Four across leaves no room for a long single word like "Stethoscope" on narrow phones. */
+@container (max-width:340px){.guest-panel.kid-panel .game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

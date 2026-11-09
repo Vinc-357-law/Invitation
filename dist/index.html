@@ -3,18 +3,70 @@
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101e30">
-  <meta name="description" content="A little Christmas miracle. You're invited to celebrate Aristia's first birthday, 18:00 on 20 December 2026 at Cocotte, SILA Urban Living.">
-  <title>Aristia's 1st Birthday · A Christmas Invitation</title>
+  <!-- URL Apps Script (kết thúc bằng /exec) dùng cho xác nhận tham dự và trò đoán bốc đồ. Xem README. -->
+  <meta name="rsvp-endpoint" content="https://script.google.com/macros/s/AKfycbx7UKpK8JtQPNkU9yr-vmd7fJcw7-Y4BeO12Qm_qLoHIwiDQczlqGS0krg_mzVcO52zZA/exec">
+  <meta name="description" content="Thiệp mời tiệc thôi nôi Hà Linh · 18:00 Chủ nhật 20.12.2026 · Nhà hàng Cocotte, SILA Urban Living, 21 Ngô Thời Nhiệm, TP.HCM.">
+  <title>Hà Linh’s 1st Birthday · Thiệp mời thôi nôi</title>
+  <!-- Ảnh xem trước khi gửi link (Zalo, Messenger, Facebook). -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:title" content="Hà Linh’s 1st Birthday · Thiệp mời thôi nôi">
+  <meta property="og:description" content="18:00 · Chủ nhật 20.12.2026 · Nhà hàng Cocotte, SILA Urban Living. Chạm để mở thiệp và xác nhận tham dự.">
+  <meta property="og:url" content="https://schizophren-ia.github.io/Invitation/">
+  <meta property="og:image" content="https://schizophren-ia.github.io/Invitation/assets/og-cover.jpg">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Xe tuần lộc bay qua trăng tròn, thiệp mời thôi nôi Hà Linh">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script>document.documentElement.classList.add('is-loading');</script>
+  <link rel="preload" as="image" href="assets/winter-moon.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <!-- Non-blocking: a slow connection to Google must never hold up the page or its scripts. media="print" loads it in the background; onload applies it. -->
+  <link id="fonts-css" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Cherry+Bomb+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Cherry+Bomb+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css?v=header-refresh"><link rel="stylesheet" href="angel-stationery.css?v=delight"><link rel="stylesheet" href="delight.css?v=hint-serif">
+  <link rel="stylesheet" href="i18n.css?v=header-refresh">
+  <link rel="stylesheet" href="card-kid.css?v=12-moon-background">
 </head>
-<body>
+<body><svg class="angel-definitions" width="0" height="0" aria-hidden="true"><defs>
+    <filter id="angel-deckle" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="2" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="angel-deckleEnv" x="-3%" y="-3%" width="106%" height="106%">
+      <feTurbulence type="fractalNoise" baseFrequency=".14" numOctaves="2" seed="11" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="angel-deckleCard" x="-4%" y="-4%" width="108%" height="108%">
+      <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="3" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="angel-soft"><feGaussianBlur stdDeviation="5"/></filter>
+    <linearGradient id="angel-goldG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbe7b0"/><stop offset=".35" stop-color="#e2b866"/>
+      <stop offset=".65" stop-color="#b8873a"/><stop offset="1" stop-color="#f0d08c"/>
+    </linearGradient>
+    <linearGradient id="angel-goldV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6dc9c"/><stop offset=".5" stop-color="#d7a952"/><stop offset="1" stop-color="#9c6e2b"/>
+    </linearGradient>
+    <linearGradient id="angel-inkGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d2ab72"/><stop offset=".5" stop-color="#a87a48"/><stop offset="1" stop-color="#c79c62"/>
+    </linearGradient>
+
+  <clipPath id="angel-cpFlapF" clipPathUnits="objectBoundingBox"><path d="M0 0 L1 0 Q0.9819 0.1438 0.9167 0.1667 Q0.8985 0.3105 0.8333 0.3333 Q0.8152 0.4771 0.75 0.5 Q0.7319 0.6438 0.6667 0.6667 Q0.6485 0.8105 0.5833 0.8333 Q0.5652 0.9771 0.5 1 Q0.4348 0.9771 0.4167 0.8333 Q0.3515 0.8105 0.3333 0.6667 Q0.2681 0.6438 0.25 0.5 Q0.1848 0.4771 0.1667 0.3333 Q0.1015 0.3105 0.0833 0.1667 Q0.0181 0.1438 0 0Z"/></clipPath><clipPath id="angel-cpFlapB" clipPathUnits="objectBoundingBox"><path d="M0.5 0 Q0.5652 0.0229 0.5833 0.1667 Q0.6485 0.1895 0.6667 0.3333 Q0.7319 0.3562 0.75 0.5 Q0.8152 0.5229 0.8333 0.6667 Q0.8985 0.6895 0.9167 0.8333 Q0.9819 0.8562 1 1 L0 1 Q0.0181 0.8562 0.0833 0.8333 Q0.1015 0.6895 0.1667 0.6667 Q0.1848 0.5229 0.25 0.5 Q0.2681 0.3562 0.3333 0.3333 Q0.3515 0.1895 0.4167 0.1667 Q0.4348 0.0229 0.5 0Z"/></clipPath><clipPath id="angel-cpLiner" clipPathUnits="objectBoundingBox"><path d="M0.5 0.13 Q0.5542 0.1565 0.5725 0.275 Q0.6267 0.3015 0.645 0.42 Q0.6992 0.4465 0.7175 0.565 Q0.7717 0.5915 0.79 0.71 Q0.8442 0.7365 0.8625 0.855 Q0.9167 0.8815 0.935 1 L0.065 1 Q0.0833 0.8815 0.1375 0.855 Q0.1558 0.7365 0.21 0.71 Q0.2283 0.5915 0.2825 0.565 Q0.3008 0.4465 0.355 0.42 Q0.3733 0.3015 0.4275 0.275 Q0.4458 0.1565 0.5 0.13Z"/></clipPath><clipPath id="angel-cpLeft" clipPathUnits="objectBoundingBox"><path d="M0 0 Q0.0654 0.0071 0.0883 0.095 Q0.1538 0.1021 0.1767 0.19 Q0.2421 0.1971 0.265 0.285 Q0.3304 0.2921 0.3533 0.38 Q0.4188 0.3871 0.4417 0.475 Q0.5071 0.4821 0.53 0.57 Q0.5019 0.6462 0.4417 0.6417 Q0.4136 0.7179 0.3533 0.7133 Q0.3252 0.7895 0.265 0.785 Q0.2369 0.8612 0.1767 0.8567 Q0.1486 0.9329 0.0883 0.9283 Q0.0602 1.0045 0 1 L0 0Z"/></clipPath><clipPath id="angel-cpRight" clipPathUnits="objectBoundingBox"><path d="M1 0 L1 1 Q0.9398 1.0045 0.9117 0.9283 Q0.8514 0.9329 0.8233 0.8567 Q0.7631 0.8612 0.735 0.785 Q0.6748 0.7895 0.6467 0.7133 Q0.5864 0.7179 0.5583 0.6417 Q0.4981 0.6462 0.47 0.57 Q0.4929 0.4821 0.5583 0.475 Q0.5812 0.3871 0.6467 0.38 Q0.6696 0.2921 0.735 0.285 Q0.7579 0.1971 0.8233 0.19 Q0.8462 0.1021 0.9117 0.095 Q0.9346 0.0071 1 0Z"/></clipPath><clipPath id="angel-cpBottom" clipPathUnits="objectBoundingBox"><path d="M0 1 Q0.0219 0.9177 0.0833 0.9117 Q0.1052 0.8294 0.1667 0.8233 Q0.1885 0.7411 0.25 0.735 Q0.2719 0.6527 0.3333 0.6467 Q0.3552 0.5644 0.4167 0.5583 Q0.4385 0.4761 0.5 0.47 Q0.5615 0.4761 0.5833 0.5583 Q0.6448 0.5644 0.6667 0.6467 Q0.7281 0.6527 0.75 0.735 Q0.8115 0.7411 0.8333 0.8233 Q0.8948 0.8294 0.9167 0.9117 Q0.9781 0.9177 1 1 L0 1Z"/></clipPath></defs></svg>
+  <div class="loader" id="loader" aria-hidden="true"><span class="loader-mark">hà linh</span><span class="loader-line"></span><span class="loader-note">Đang chuẩn bị phép màu…</span></div>
   <main class="world" id="world">
-    <div class="landscape" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div>
+    <div class="backdrop" aria-hidden="true">
+      <div class="landscape"></div>
+      <div class="moon-halo"></div>
+      <canvas class="sky" id="sky"></canvas>
+      <div class="fog fog-a"></div><div class="fog fog-b"></div>
+    </div>
+    <div class="shade" aria-hidden="true"></div>
     <header class="header">
-      <a class="wordmark" href="./" aria-label="Aristia, trang đầu">aristia<span>ONE WONDERFUL YEAR</span></a>
       <button class="sound pill" id="sound" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sound-label">Bật nhạc</span></button>
+      <div class="language-switch" role="group" aria-label="Chọn ngôn ngữ"><button type="button" data-language="vi" lang="vi" aria-label="Tiếng Việt" aria-pressed="true">VIE</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
     </header>
     <section class="intro" aria-labelledby="headline">
       <p class="eyebrow"><span></span> A VERY SPECIAL DELIVERY <span></span></p>
@@ -22,57 +74,412 @@
       <p class="subtitle">A season of wonder. A year of love.</p>
     </section>
     <button class="sleigh-flight" id="sleigh" aria-label="Chạm xe tuần lộc để nhận thiệp mời">
-      <img src="assets/santa-realistic.png" alt="" class="sleigh-art" width="620" height="210">
+      <span class="sleigh-body">
+        <img src="assets/santa-team.webp" alt="" class="sleigh-art" width="620" height="181">
+      </span>
       <span class="sleigh-glitter" aria-hidden="true">✧ · ˚ · ✦ · ˚</span>
-      <span class="gift-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10h16v4H4zM6 14v7h12v-7M12 10v11M12 10H8.5A3.5 3.5 0 1 1 12 6.5V10Zm0 0h3.5A3.5 3.5 0 1 0 12 6.5V10Z"/></svg></span>
     </button>
     <section class="invitation-cue" aria-label="Nhận thiệp mời">
-      <span class="tiny-star" aria-hidden="true">✧</span>
-      <p>Một món quà nhỏ, dành riêng cho bạn</p>
-      <p class="receive-hint">Chạm vào xe tuần lộc để nhận thiệp <span aria-hidden="true">↗</span></p>
-      <span class="cue-note">A little magic is just a tap away</span>
+      <div class="countdown" id="countdown">20 · 12 · 2026</div>
+      <button type="button" class="receive-hint" id="receive-hint">Chạm vào xe tuần lộc để nhận thiệp <span aria-hidden="true">↗</span></button>
     </section>
-    <footer class="footer"><span>ARISTIA’S 1ST BIRTHDAY</span><span class="footer-date">20 <i>·</i> 12 <i>·</i> 2026</span><span class="footer-place">WITH LOVE, UNDER THE CHRISTMAS MOON</span></footer>
+    <footer class="footer"><span class="footer-place">WITH LOVE, UNDER THE CHRISTMAS MOON</span></footer>
     <div class="steps" aria-hidden="true"><i class="active"></i><i></i><i></i></div>
   </main>
   <canvas id="snow" aria-hidden="true"></canvas>
   <div class="overlay" id="overlay" hidden>
-    <section class="experience" role="dialog" aria-modal="true" aria-label="Món quà thiệp mời của Aristia" tabindex="-1">
+    <section class="experience" role="dialog" aria-modal="true" aria-label="Món quà thiệp mời của Hà Linh" tabindex="-1">
       <button class="sound pill dialog-sound" id="sound-dialog" aria-pressed="false">Bật nhạc</button>
+      <div class="language-switch dialog-language" role="group" aria-label="Chọn ngôn ngữ"><button type="button" data-language="vi" lang="vi" aria-label="Tiếng Việt" aria-pressed="true">VIE</button><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">EN</button></div>
       <button class="close icon-button" id="close" aria-label="Đóng thiệp">×</button>
+      <div class="ke-sky" aria-hidden="true"><div class="ke-lights"></div><svg class="ke-ground" viewBox="0 0 1080 190" preserveAspectRatio="none" focusable="false"><path fill="#FFF8F3" d="M0 56C190 6 340 84 560 50S900 14 1080 54V190H0Z"/></svg></div>
       <div class="envelope-scene" id="envelope-scene">
-        <p class="eyebrow envelope-heading">A LITTLE MAGIC, SEALED WITH LOVE</p>
-        <div class="envelope" id="envelope">
-          <div class="envelope-back"></div>
-          <div class="letter-preview"><span>You're invited</span><span>Aristia</span><small>A FIRST BIRTHDAY CELEBRATION</small></div>
-          <div class="flap"></div><div class="envelope-front"></div>
-          <div class="envelope-inscription">For you, with love</div>
-          <button class="seal" id="seal" aria-label="Nhấn dấu sáp bông tuyết để mở phong bì"><span class="seal-piece p1"></span><span class="seal-piece p2"></span><span class="seal-piece p3"></span><span class="seal-piece p4"></span><span class="snowflake" aria-hidden="true">❄</span></button>
+        <p class="envelope-heading">Có một lá thư Giáng sinh gửi đến cả nhà!</p>
+        <div class="kid-envelope" id="envelope">
+          <div class="ke-back">
+            <svg viewBox="0 0 900 420" aria-hidden="true" focusable="false"><g fill="#FFFFFF"><circle cx="130" cy="44" r="10"/><circle cx="250" cy="96" r="7"/><circle cx="350" cy="50" r="11"/><circle cx="450" cy="150" r="9"/><circle cx="548" cy="56" r="8"/><circle cx="640" cy="104" r="11"/><circle cx="768" cy="46" r="8"/><circle cx="372" cy="210" r="7"/><circle cx="524" cy="232" r="10"/></g></svg>
+          </div>
+          <div class="ke-flap"><div class="ke-flap-in">
+            <svg class="ke-face" viewBox="0 0 900 440" aria-hidden="true" focusable="false">
+              <path fill="#C8374A" d="M0 0H900L490 410Q450 440 410 410Z"/>
+              <path d="M54 14L450 400L846 14" fill="none" stroke="#FFF8F3" stroke-width="9" stroke-linecap="round" stroke-dasharray="1 22"/>
+              <g stroke-width="9" stroke-linecap="round" fill="none">
+                <path stroke="#F6CD6B" d="M190 46l16 8"/><path stroke="#FFF8F3" d="M290 40l14-10"/><path stroke="#8CC7AE" d="M382 58l18 2"/>
+                <path stroke="#F6CD6B" d="M470 36l10 14"/><path stroke="#FFF8F3" d="M570 56l16 8"/><path stroke="#8CC7AE" d="M672 40l16-8"/>
+                <path stroke="#FFF8F3" d="M300 118l14 10"/><path stroke="#8CC7AE" d="M400 136l14-10"/><path stroke="#F6CD6B" d="M506 122l16 6"/>
+                <path stroke="#FFF8F3" d="M594 132l12-12"/><path stroke="#F6CD6B" d="M380 212l14 8"/><path stroke="#8CC7AE" d="M506 214l14-8"/>
+              </g>
+            </svg>
+            <svg class="ke-face ke-face-in" viewBox="0 0 900 440" aria-hidden="true" focusable="false">
+              <path fill="#F5E8D3" d="M0 440H900L490 30Q450 0 410 30Z"/>
+              <path fill="#FCE1E9" d="M90 414H810L475 74Q450 54 425 74Z"/>
+              <g fill="#FFFFFF"><circle cx="300" cy="360" r="10"/><circle cx="450" cy="300" r="12"/><circle cx="600" cy="360" r="9"/><circle cx="400" cy="210" r="8"/><circle cx="500" cy="196" r="9"/><circle cx="450" cy="120" r="7"/></g>
+            </svg>
+          </div></div>
+          <svg class="ke-front" viewBox="0 0 900 1360" aria-hidden="true" focusable="false">
+            <path fill="#EFDFC4" d="M0 0L450 400L900 0V1324Q900 1360 864 1360H36Q0 1360 0 1324Z"/>
+            <path fill="#F8EEDC" d="M450 400L882 1346H18Z"/>
+            <path d="M450 400L18 1346M450 400L882 1346" fill="none" stroke="#DFCBA8" stroke-width="4"/>
+            <path d="M26 64V1310Q26 1334 50 1334H850Q874 1334 874 1310V64" fill="none" stroke="#C8374A" stroke-width="24" stroke-dasharray="36 52"/>
+            <path d="M26 64V1310Q26 1334 50 1334H850Q874 1334 874 1310V64" fill="none" stroke="#2E7A5E" stroke-width="24" stroke-dasharray="36 52" stroke-dashoffset="44"/>
+            <g transform="translate(56 1086) scale(1.4615)">
+              <rect x="55" y="118" width="20" height="26" rx="4" fill="#A9754C"/>
+              <polygon points="65,60 112,120 18,120" fill="#3F8F70" stroke="#3F8F70" stroke-width="12" stroke-linejoin="round"/>
+              <polygon points="65,24 100,76 30,76" fill="#2E7A5E" stroke="#2E7A5E" stroke-width="12" stroke-linejoin="round"/>
+              <circle cx="65" cy="16" r="11" fill="#F6CD6B"/>
+              <circle cx="48" cy="102" r="7" fill="#C8374A"/><circle cx="84" cy="98" r="7" fill="#FFF8F3"/><circle cx="66" cy="62" r="6" fill="#C8374A"/>
+            </g>
+            <g transform="translate(664 1118) scale(1.3333)">
+              <rect x="10" y="62" width="85" height="70" rx="10" fill="#C8374A"/>
+              <rect x="44" y="62" width="17" height="70" fill="#FFF8F3"/>
+              <rect x="4" y="50" width="97" height="22" rx="8" fill="#A92B3C"/>
+              <ellipse cx="38" cy="38" rx="20" ry="12" fill="#F6CD6B" transform="rotate(25 38 38)"/>
+              <ellipse cx="67" cy="38" rx="20" ry="12" fill="#F6CD6B" transform="rotate(-25 67 38)"/>
+              <circle cx="52" cy="46" r="9" fill="#F6CD6B"/>
+              <rect x="88" y="94" width="42" height="38" rx="7" fill="#3F8F70"/>
+              <rect x="103" y="94" width="11" height="38" fill="#FFF8F3"/>
+              <rect x="84" y="86" width="50" height="14" rx="5" fill="#2E7A5E"/>
+            </g>
+          </svg>
+          <div class="ke-seal" id="seal" aria-hidden="true">
+            <svg viewBox="0 0 220 220" focusable="false">
+              <circle cx="110" cy="110" r="108" fill="#F5E8D3"/>
+              <circle cx="110" cy="110" r="96" fill="none" stroke="#2E7A5E" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 14"/>
+              <g transform="translate(110 128) scale(.58) translate(-180 -150)">
+                <g fill="none" stroke="#C98A5A" stroke-width="14" stroke-linecap="round">
+                  <path d="M132 96C120 70 104 58 92 30"/><path d="M112 64C96 62 84 58 72 44"/>
+                  <path d="M228 96C240 70 256 58 268 30"/><path d="M248 64C264 62 276 58 288 44"/>
+                </g>
+                <ellipse cx="84" cy="128" rx="36" ry="19" fill="#E7B48A" transform="rotate(-25 84 128)"/>
+                <ellipse cx="84" cy="128" rx="21" ry="9" fill="#F7B6C8" transform="rotate(-25 84 128)"/>
+                <ellipse cx="276" cy="128" rx="36" ry="19" fill="#E7B48A" transform="rotate(25 276 128)"/>
+                <ellipse cx="276" cy="128" rx="21" ry="9" fill="#F7B6C8" transform="rotate(25 276 128)"/>
+                <ellipse cx="180" cy="150" rx="92" ry="80" fill="#EDBE95"/>
+                <ellipse cx="180" cy="180" rx="50" ry="36" fill="#FFF1E4"/>
+                <ellipse cx="180" cy="160" rx="18" ry="13" fill="#C8374A"/>
+                <path d="M180 173V183M180 183Q170 194 161 185M180 183Q190 194 199 185" fill="none" stroke="#8A4A3A" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="132" cy="146" r="13" fill="#3E2A2A"/><circle cx="137" cy="141" r="4.5" fill="#FFFFFF"/>
+                <circle cx="228" cy="146" r="13" fill="#3E2A2A"/><circle cx="233" cy="141" r="4.5" fill="#FFFFFF"/>
+                <ellipse cx="108" cy="178" rx="18" ry="11" fill="#F7A8BF"/>
+                <ellipse cx="252" cy="178" rx="18" ry="11" fill="#F7A8BF"/>
+              </g>
+            </svg>
+          </div>
         </div>
-        <div class="envelope-instruction"><p>Một lời mời từ trái tim</p><span>Chạm vào dấu sáp để mở thiệp</span><span class="tap-indicator" aria-hidden="true">↓</span></div>
       </div>
-      <div class="card-scene" id="card-scene" hidden>
-        <article class="invitation" tabindex="-1" aria-labelledby="card-title">
-          <div class="card-border" aria-hidden="true"></div>
-          <span class="card-snowflake" aria-hidden="true">❄</span>
-          <p class="script invited">You're invited</p>
-          <p class="card-kicker">TO CELEBRATE A LITTLE CHRISTMAS MIRACLE</p>
-          <h2 id="card-title">Aristia’s</h2>
-          <p class="birthday"><span>1</span><sup>st</sup> birthday</p>
-          <div class="ornament" aria-hidden="true"><span></span>✧<span></span></div>
-          <p class="card-message">One year of tiny hands &amp; endless love.<br>Join us for an evening full of wonder.</p>
-          <div class="date-block"><p>SUNDAY, 20 DECEMBER 2026</p><strong>18:00</strong><span>HỒ CHÍ MINH CITY · GMT+7</span></div>
-          <div class="venue"><p>COCOTTE RESTAURANT</p><span>SILA Urban Living</span><address>21 Ngô Thời Nhiệm, phường Xuân Hòa<br>Hồ Chí Minh City</address></div>
-          <p class="script signoff">Your presence is our sweetest gift.</p>
-          <div class="card-actions"><button id="calendar">Lưu vào lịch <span aria-hidden="true">＋</span></button><a href="https://www.google.com/maps/search/?api=1&query=Cocotte+SILA+Urban+Living+21+Ngo+Thoi+Nhiem+Ho+Chi+Minh" target="_blank" rel="noopener noreferrer">Xem bản đồ <span aria-hidden="true">↗</span></a></div>
-          <p class="card-bottom">WITH LOVE, ARISTIA &amp; FAMILY</p>
+
+<div class="card-scene" id="card-scene" hidden>
+        <article class="invitation kid-card" tabindex="-1" aria-labelledby="card-title">
+          <!-- Snow on the pink sky -->
+          <svg class="kc-art" data-part="snow" style="--x:0;--y:0;--w:1080;--h:1000" viewBox="0 0 1080 1000" aria-hidden="true" focusable="false">
+            <g fill="#FFFFFF">
+              <circle cx="42" cy="330" r="9"/><circle cx="118" cy="402" r="6"/><circle cx="58" cy="470" r="11"/>
+              <circle cx="30" cy="612" r="7"/><circle cx="96" cy="668" r="10"/><circle cx="44" cy="760" r="6"/>
+              <circle cx="340" cy="716" r="9"/><circle cx="300" cy="830" r="6"/><circle cx="352" cy="930" r="8"/>
+              <circle cx="738" cy="744" r="7"/><circle cx="716" cy="868" r="10"/><circle cx="742" cy="960" r="6"/>
+              <circle cx="1040" cy="346" r="10"/><circle cx="968" cy="408" r="6"/><circle cx="1030" cy="530" r="8"/>
+              <circle cx="1046" cy="650" r="11"/><circle cx="984" cy="716" r="7"/><circle cx="1036" cy="812" r="6"/>
+              <circle cx="200" cy="196" r="6"/><circle cx="880" cy="214" r="7"/><circle cx="120" cy="620" r="5"/>
+              <circle cx="930" cy="620" r="6"/><circle cx="250" cy="668" r="8"/><circle cx="846" cy="686" r="9"/>
+            </g>
+            <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none">
+              <path transform="translate(70 386)" d="M0-24V24M-21-12L21 12M-21 12L21-12"/>
+              <path transform="translate(1010 464) rotate(18)" d="M0-28V28M-24-14L24 14M-24 14L24-14"/>
+              <path transform="translate(176 716) rotate(12)" d="M0-20V20M-17-10L17 10M-17 10L17-10"/>
+              <path transform="translate(1000 900) rotate(24)" d="M0-24V24M-21-12L21 12M-21 12L21-12"/>
+            </g>
+            <g fill="#F6CD6B">
+              <path d="M1022 590C1026 606 1030 610 1046 614C1030 618 1026 622 1022 638C1018 622 1014 618 998 614C1014 610 1018 606 1022 590Z"/>
+              <path d="M50 540C53 552 56 555 68 558C56 561 53 564 50 576C47 564 44 561 32 558C44 555 47 552 50 540Z"/>
+              <path d="M254 200C257 210 260 213 270 216C260 219 257 222 254 232C251 222 248 219 238 216C248 213 251 210 254 200Z"/>
+            </g>
+          </svg>
+          <!-- Cream icing along the top -->
+          <svg class="kc-art" data-part="icing" style="--x:0;--y:0;--w:1080;--h:170" viewBox="0 0 1080 170" aria-hidden="true" focusable="false">
+            <path fill="#F8C6D5" transform="translate(0 12)" d="M0 0H1080V60a60 40 0 0 1-120 0a45 70 0 0 1-90 0a75 35 0 0 1-150 0a50 85 0 0 1-100 0a65 45 0 0 1-130 0a45 60 0 0 1-90 0a80 38 0 0 1-160 0a55 75 0 0 1-110 0a65 42 0 0 1-130 0Z"/>
+            <path fill="#FFF8F3" d="M0 0H1080V60a60 40 0 0 1-120 0a45 70 0 0 1-90 0a75 35 0 0 1-150 0a50 85 0 0 1-100 0a65 45 0 0 1-130 0a45 60 0 0 1-90 0a80 38 0 0 1-160 0a55 75 0 0 1-110 0a65 42 0 0 1-130 0Z"/>
+            <g stroke-width="9" stroke-linecap="round" fill="none">
+              <path stroke="#E56A92" d="M60 28l16 8"/><path stroke="#8CC7AE" d="M150 46l14-10"/><path stroke="#F6CD6B" d="M236 24l18 2"/>
+              <path stroke="#E56A92" d="M330 52l10-14"/><path stroke="#8CC7AE" d="M420 26l16 8"/><path stroke="#F6CD6B" d="M500 50l16-8"/>
+              <path stroke="#E56A92" d="M590 24l14 12"/><path stroke="#8CC7AE" d="M676 48l18-4"/><path stroke="#F6CD6B" d="M770 26l12 12"/>
+              <path stroke="#E56A92" d="M860 48l16-10"/><path stroke="#8CC7AE" d="M950 24l14 10"/><path stroke="#F6CD6B" d="M1030 48l16-6"/>
+            </g>
+          </svg>
+          <!-- Hanging baubles -->
+          <svg class="kc-art" data-part="baubles" style="--x:0;--y:0;--w:1080;--h:280" viewBox="0 0 1080 280" aria-hidden="true" focusable="false">
+            <g>
+              <path d="M78 110V168" stroke="#C93A6C" stroke-width="4"/>
+              <rect x="66" y="160" width="24" height="16" rx="5" fill="#F6CD6B"/>
+              <circle cx="78" cy="212" r="40" fill="#E56A92"/>
+              <path d="M40 202q19 16 38 0t38 0" fill="none" stroke="#FFF8F3" stroke-width="7" stroke-linecap="round"/>
+              <ellipse cx="62" cy="192" rx="9" ry="6" fill="#FFFFFF" transform="rotate(-30 62 192)"/>
+            </g>
+            <g>
+              <path d="M164 130V150" stroke="#C93A6C" stroke-width="4"/>
+              <rect x="155" y="146" width="18" height="12" rx="4" fill="#F6CD6B"/>
+              <circle cx="164" cy="180" r="26" fill="#8CC7AE"/>
+              <ellipse cx="154" cy="170" rx="6" ry="4" fill="#FFFFFF" transform="rotate(-30 154 170)"/>
+            </g>
+            <g>
+              <path d="M1002 96V166" stroke="#C93A6C" stroke-width="4"/>
+              <rect x="990" y="158" width="24" height="16" rx="5" fill="#F6CD6B"/>
+              <circle cx="1002" cy="212" r="40" fill="#F6CD6B"/>
+              <path d="M964 212q19 -16 38 0t38 0" fill="none" stroke="#FFF8F3" stroke-width="7" stroke-linecap="round"/>
+              <ellipse cx="986" cy="192" rx="9" ry="6" fill="#FFFFFF" transform="rotate(-30 986 192)"/>
+            </g>
+            <g>
+              <path d="M914 120V150" stroke="#C93A6C" stroke-width="4"/>
+              <rect x="905" y="146" width="18" height="12" rx="4" fill="#F6CD6B"/>
+              <circle cx="914" cy="180" r="26" fill="#E56A92"/>
+              <ellipse cx="904" cy="170" rx="6" ry="4" fill="#FFFFFF" transform="rotate(-30 904 170)"/>
+            </g>
+          </svg>
+
+          <p class="kc-invite">Thân mời cả nhà đến chung vui</p>
+          <h2 id="card-title">Tiệc thôi nôi</h2>
+
+          <div class="kc-name" role="img" aria-label="Hà Linh">
+            <span style="--r:-7deg;--d:6">H<svg class="kc-hat" viewBox="0 0 160 130" aria-hidden="true" focusable="false">
+                <path fill="#D9527F" d="M28 98C40 40 78 10 118 20C138 26 148 44 146 62C134 46 120 44 110 50C118 66 124 84 128 98Z"/>
+                <circle cx="146" cy="70" r="16" fill="#FFF8F3"/>
+                <rect x="18" y="88" width="122" height="32" rx="16" fill="#FFF8F3"/>
+              </svg></span>
+            <span style="--r:5deg;--d:-8">à</span>
+            <span class="kc-word" style="--r:-4deg;--d:4">L</span>
+            <span style="--r:6deg;--d:-10">i</span>
+            <span style="--r:-5deg;--d:6">n</span>
+            <span style="--r:4deg;--d:-8">h</span>
+          </div>
+
+          <div class="kc-age">
+            <svg class="kc-icon" style="--w:30;--h:30" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#F6CD6B" d="M12 1C13 8 16 11 23 12C16 13 13 16 12 23C11 16 8 13 1 12C8 11 11 8 12 1Z"/></svg>
+            <span class="kc-age-text">Bé tròn 1 tuổi rồi!</span>
+            <svg class="kc-icon" style="--w:30;--h:30" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#F6CD6B" d="M12 1C13 8 16 11 23 12C16 13 13 16 12 23C11 16 8 13 1 12C8 11 11 8 12 1Z"/></svg>
+          </div>
+
+          <!-- Snowy ground -->
+          <svg class="kc-art" data-part="ground" style="--x:0;--y:980;--w:1080;--h:940" viewBox="0 0 1080 940" aria-hidden="true" focusable="false">
+            <path fill="#FFF4F6" d="M0 46C170 0 330 78 540 44S900 4 1080 48V940H0Z"/>
+            <ellipse cx="205" cy="68" rx="130" ry="13" fill="#F8D3DD"/>
+            <ellipse cx="540" cy="72" rx="150" ry="15" fill="#F8D3DD"/>
+            <ellipse cx="880" cy="64" rx="146" ry="13" fill="#F8D3DD"/>
+          </svg>
+
+          <!-- Fir tree -->
+          <svg class="kc-art" style="--x:70;--y:705;--w:270;--h:350" viewBox="0 0 270 350" aria-hidden="true" focusable="false">
+            <rect x="120" y="300" width="30" height="45" rx="6" fill="#C98A5A"/>
+            <polygon points="135,175 246,305 24,305" fill="#8CC7AE" stroke="#8CC7AE" stroke-width="18" stroke-linejoin="round"/>
+            <polygon points="135,110 224,225 46,225" fill="#79BA9F" stroke="#79BA9F" stroke-width="18" stroke-linejoin="round"/>
+            <polygon points="135,60 196,150 74,150" fill="#8CC7AE" stroke="#8CC7AE" stroke-width="18" stroke-linejoin="round"/>
+            <g fill="none" stroke="#FFF8F3" stroke-width="8" stroke-linecap="round">
+              <path d="M86 130Q135 155 184 130"/>
+              <path d="M62 205Q135 245 208 205"/>
+              <path d="M41 280Q135 325 229 280"/>
+            </g>
+            <circle cx="135" cy="108" r="11" fill="#E56A92"/>
+            <circle cx="104" cy="182" r="12" fill="#F6CD6B"/>
+            <circle cx="168" cy="186" r="12" fill="#E56A92"/>
+            <circle cx="82" cy="262" r="14" fill="#E56A92"/>
+            <circle cx="135" cy="266" r="14" fill="#F6CD6B"/>
+            <circle cx="190" cy="262" r="14" fill="#FFF8F3"/>
+            <polygon points="135,4 143.2,24.7 165.4,26.1 148.3,40.3 153.8,61.9 135,50 116.2,61.9 121.7,40.3 104.6,26.1 126.8,24.7" fill="#F6CD6B" stroke="#F6CD6B" stroke-width="8" stroke-linejoin="round"/>
+          </svg>
+
+          <!-- Little reindeer -->
+          <svg class="kc-art" data-part="reindeer" style="--x:360;--y:712;--w:360;--h:340" viewBox="0 0 360 340" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#C98A5A" stroke-width="14" stroke-linecap="round">
+              <path d="M132 96C120 70 104 58 92 30"/><path d="M112 64C96 62 84 58 72 44"/>
+              <path d="M228 96C240 70 256 58 268 30"/><path d="M248 64C264 62 276 58 288 44"/>
+            </g>
+            <g fill="none" stroke="#E7B48A" stroke-width="34" stroke-linecap="round">
+              <path d="M112 256Q76 246 58 208"/>
+              <path d="M248 256Q284 246 302 208"/>
+            </g>
+            <circle cx="56" cy="202" r="19" fill="#C98A5A"/>
+            <circle cx="304" cy="202" r="19" fill="#C98A5A"/>
+            <ellipse cx="180" cy="275" rx="82" ry="62" fill="#E7B48A"/>
+            <ellipse cx="180" cy="288" rx="52" ry="40" fill="#FFF1E4"/>
+            <ellipse cx="116" cy="320" rx="38" ry="19" fill="#D9A074"/>
+            <ellipse cx="116" cy="320" rx="20" ry="10" fill="#F7B6C8"/>
+            <ellipse cx="244" cy="320" rx="38" ry="19" fill="#D9A074"/>
+            <ellipse cx="244" cy="320" rx="20" ry="10" fill="#F7B6C8"/>
+            <rect x="202" y="232" width="40" height="74" rx="12" fill="#D9527F" transform="rotate(8 222 232)"/>
+            <g stroke="#FFF8F3" stroke-width="5" stroke-linecap="round">
+              <path d="M204 284l34 5"/><path d="M203 270l34 5"/>
+            </g>
+            <rect x="114" y="212" width="132" height="38" rx="19" fill="#D9527F"/>
+            <g stroke="#FFF8F3" stroke-width="5" stroke-linecap="round">
+              <path d="M140 220v22"/><path d="M164 220v22"/><path d="M196 220v22"/><path d="M220 220v22"/>
+            </g>
+            <ellipse cx="84" cy="128" rx="36" ry="19" fill="#E7B48A" transform="rotate(-25 84 128)"/>
+            <ellipse cx="84" cy="128" rx="21" ry="9" fill="#F7B6C8" transform="rotate(-25 84 128)"/>
+            <ellipse cx="276" cy="128" rx="36" ry="19" fill="#E7B48A" transform="rotate(25 276 128)"/>
+            <ellipse cx="276" cy="128" rx="21" ry="9" fill="#F7B6C8" transform="rotate(25 276 128)"/>
+            <ellipse cx="180" cy="150" rx="92" ry="80" fill="#EDBE95"/>
+            <circle cx="150" cy="104" r="5" fill="#FFF1E4"/><circle cx="210" cy="104" r="5" fill="#FFF1E4"/><circle cx="136" cy="118" r="4" fill="#FFF1E4"/><circle cx="224" cy="118" r="4" fill="#FFF1E4"/>
+            <ellipse cx="180" cy="180" rx="50" ry="36" fill="#FFF1E4"/>
+            <ellipse cx="180" cy="160" rx="18" ry="13" fill="#E56A92"/>
+            <ellipse cx="175" cy="156" rx="5" ry="3" fill="#FFFFFF"/>
+            <path d="M180 173V183M180 183Q170 194 161 185M180 183Q190 194 199 185" fill="none" stroke="#8A4A3A" stroke-width="4.5" stroke-linecap="round"/>
+            <circle cx="132" cy="146" r="13" fill="#3E2A2A"/><circle cx="137" cy="141" r="4.5" fill="#FFFFFF"/>
+            <circle cx="228" cy="146" r="13" fill="#3E2A2A"/><circle cx="233" cy="141" r="4.5" fill="#FFFFFF"/>
+            <ellipse cx="108" cy="178" rx="18" ry="11" fill="#F7A8BF"/>
+            <ellipse cx="252" cy="178" rx="18" ry="11" fill="#F7A8BF"/>
+            <path d="M178 76C160 56 138 60 128 72C146 86 164 88 178 76Z" fill="#79BA9F"/>
+            <path d="M182 76C200 56 222 60 232 72C214 86 196 88 182 76Z" fill="#79BA9F"/>
+            <circle cx="172" cy="74" r="10" fill="#D9527F"/><circle cx="190" cy="74" r="10" fill="#D9527F"/>
+          </svg>
+
+          <!-- Birthday cake with a number-one candle -->
+          <svg class="kc-art" data-part="cake" style="--x:735;--y:735;--w:290;--h:320" viewBox="0 0 290 320" aria-hidden="true" focusable="false">
+            <path d="M146 4C158 18 162 28 146 40C130 28 134 18 146 4Z" fill="#F59A6A"/>
+            <path d="M146 18C152 25 153 30 146 36C139 30 140 25 146 18Z" fill="#F6CD6B"/>
+            <path d="M120 70L146 52V118" fill="none" stroke="#F6CD6B" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="30" y="200" width="230" height="92" rx="26" fill="#EE8FAE"/>
+            <rect x="55" y="116" width="180" height="94" rx="26" fill="#F8B8CC"/>
+            <g fill="#FFF8F3">
+              <rect x="55" y="116" width="180" height="32" rx="16"/>
+              <rect x="72" y="126" width="24" height="56" rx="12"/>
+              <rect x="112" y="126" width="24" height="42" rx="12"/>
+              <rect x="152" y="126" width="24" height="66" rx="12"/>
+              <rect x="192" y="126" width="24" height="46" rx="12"/>
+              <circle cx="62" cy="248" r="10"/><circle cx="104" cy="256" r="10"/><circle cx="186" cy="256" r="10"/><circle cx="228" cy="248" r="10"/>
+            </g>
+            <path d="M144 246C128 226 108 230 100 242C114 256 132 258 144 246Z" fill="#79BA9F"/>
+            <path d="M146 246C162 226 182 230 190 242C176 256 158 258 146 246Z" fill="#79BA9F"/>
+            <circle cx="136" cy="246" r="11" fill="#C93A6C"/><circle cx="154" cy="246" r="11" fill="#C93A6C"/>
+            <rect x="10" y="286" width="270" height="20" rx="10" fill="#F6CD6B"/>
+          </svg>
+
+          <!-- Time and date -->
+          <div class="kc-pill kc-pill-l"><span class="kc-at">Vào lúc</span><span class="kc-num">18:00</span></div>
+          <svg class="kc-art" style="--x:500;--y:1078;--w:80;--h:50" viewBox="0 0 80 50" aria-hidden="true" focusable="false">
+            <path d="M40 22C26 2 16 12 26 20C31 24 36 24 40 22C44 24 49 24 54 20C64 12 54 2 40 22Z" fill="none" stroke="#C93A6C" stroke-width="5" stroke-linejoin="round"/>
+            <rect x="22" y="24" width="36" height="24" rx="7" fill="#F6CD6B"/>
+          </svg>
+          <div class="kc-date"><span class="kc-num">20</span><span class="kc-month">Tháng 12</span></div>
+          <div class="kc-pill kc-pill-r"><span class="kc-day">Chủ Nhật</span><span class="kc-num">2026</span></div>
+
+          <!-- Place -->
+          <div class="kc-venue">
+            <div class="kc-venue-in">
+              <div class="kc-venue-name">
+                <svg class="kc-icon" style="--w:58;--h:72" viewBox="0 0 58 72" aria-hidden="true" focusable="false"><path fill="#C93A6C" d="M29 2C13 2 3 14 3 28C3 46 29 70 29 70S55 46 55 28C55 14 45 2 29 2Z"/><circle cx="29" cy="28" r="11" fill="#FFF8F3"/></svg>
+                <span class="kc-restaurant">Nhà hàng Cocotte</span>
+              </div>
+              <span class="kc-venue-sub">SILA Urban Living</span>
+              <span class="kc-street">21 Ngô Thời Nhiệm, P. Xuân Hòa</span>
+              <span class="kc-city">TP. Hồ Chí Minh</span>
+            </div>
+          </div>
+
+          <p class="kc-close"><span class="kc-close-1">Sự hiện diện của cả nhà là món quà</span><br><span class="kc-close-2">Giáng sinh ngọt ngào nhất của bé</span></p>
+
+          <!-- Bottom corners -->
+          <svg class="kc-art" data-part="tree-small" style="--x:22;--y:1752;--w:130;--h:150" viewBox="0 0 130 150" aria-hidden="true" focusable="false">
+            <rect x="55" y="118" width="20" height="26" rx="4" fill="#C98A5A"/>
+            <polygon points="65,60 112,120 18,120" fill="#8CC7AE" stroke="#8CC7AE" stroke-width="12" stroke-linejoin="round"/>
+            <polygon points="65,24 100,76 30,76" fill="#79BA9F" stroke="#79BA9F" stroke-width="12" stroke-linejoin="round"/>
+            <circle cx="65" cy="16" r="11" fill="#F6CD6B"/>
+            <circle cx="48" cy="102" r="7" fill="#E56A92"/><circle cx="84" cy="98" r="7" fill="#FFF8F3"/><circle cx="66" cy="62" r="6" fill="#E56A92"/>
+          </svg>
+          <svg class="kc-art" data-part="gift" style="--x:925;--y:1762;--w:135;--h:140" viewBox="0 0 135 140" aria-hidden="true" focusable="false">
+            <rect x="10" y="62" width="85" height="70" rx="10" fill="#EE8FAE"/>
+            <rect x="44" y="62" width="17" height="70" fill="#FFF8F3"/>
+            <rect x="4" y="50" width="97" height="22" rx="8" fill="#D9527F"/>
+            <ellipse cx="38" cy="38" rx="20" ry="12" fill="#F6CD6B" transform="rotate(25 38 38)"/>
+            <ellipse cx="67" cy="38" rx="20" ry="12" fill="#F6CD6B" transform="rotate(-25 67 38)"/>
+            <circle cx="52" cy="46" r="9" fill="#F6CD6B"/>
+            <rect x="88" y="94" width="42" height="38" rx="7" fill="#8CC7AE"/>
+            <rect x="103" y="94" width="11" height="38" fill="#FFF8F3"/>
+            <rect x="84" y="86" width="50" height="14" rx="5" fill="#79BA9F"/>
+          </svg>
         </article>
-        <button class="replay" id="replay"><span aria-hidden="true">↻</span> Xem lại phép màu</button>
+        <div class="card-actions">
+          <button type="button" class="rsvp-submit" id="rsvp-open">Xác nhận tham dự</button>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Cocotte+SILA+Urban+Living+21+Ngo+Thoi+Nhiem+Ho+Chi+Minh" target="_blank" rel="noopener noreferrer">Bản đồ <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="card-extras">
+          <button class="replay" id="replay"><span aria-hidden="true">↻</span> Xem lại phép màu</button>
+        </div>
       </div>
+      <section class="guest-panel kid-panel" id="rsvp-scene" aria-labelledby="rsvp-title" hidden>
+          <form class="rsvp kp-body" id="rsvp" aria-labelledby="rsvp-title">
+            <p class="guest-kicker">HÀ LINH’S 1ST BIRTHDAY</p>
+            <h2 id="rsvp-title" tabindex="-1">Xác nhận tham dự</h2>
+            <p class="rsvp-note" id="rsvp-note">Bản xem thử · Phản hồi chỉ hiển thị trên trang này.</p>
+            <div class="kp-box">
+            <label class="rsvp-name">Tên khách mời <input id="rsvp-name" name="guestName" maxlength="100" autocomplete="name" required></label>
+            <fieldset class="rsvp-options">
+              <legend>Bạn có thể đến dự tiệc không?</legend>
+              <label><input type="radio" name="attendance" value="yes" required> Sẽ đến</label>
+              <label><input type="radio" name="attendance" value="no"> Không thể đến</label>
+            </fieldset>
+            <div class="rsvp-counts" id="rsvp-counts" hidden>
+              <label>Người lớn <input id="rsvp-adults" name="adults" type="number" min="0" max="99" step="1" value="1" inputmode="numeric" required disabled></label>
+              <label>Trẻ em <input id="rsvp-children" name="children" type="number" min="0" max="99" step="1" value="0" inputmode="numeric" required disabled></label>
+            </div>
+            </div>
+            <button type="submit" class="rsvp-submit" id="rsvp-submit">Xác nhận và xem lịch</button>
+            <button type="button" class="guest-back" id="rsvp-back">← Về thiệp mời</button>
+          </form>
+      </section>
+      <section class="guest-panel kid-panel calendar-panel" id="calendar-scene" data-hero="cake" aria-labelledby="calendar-title" hidden><div class="kp-body">
+        <p class="guest-kicker">HÀ LINH’S 1ST BIRTHDAY</p>
+        <h2 id="calendar-title" tabindex="-1"><time datetime="2026-12-20">20.12.2026</time></h2>
+        <p class="calendar-details">Chủ nhật · 18:00 · Giờ Việt Nam</p>
+        <div class="kp-box"><table class="event-calendar">
+          <caption>Tháng 12 · 2026</caption>
+          <thead><tr><th scope="col">T2</th><th scope="col">T3</th><th scope="col">T4</th><th scope="col">T5</th><th scope="col">T6</th><th scope="col">T7</th><th scope="col">CN</th></tr></thead>
+          <tbody>
+            <tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+            <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
+            <tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td><time class="event-day" datetime="2026-12-20" aria-label="20, ngày dự tiệc">20</time></td></tr>
+            <tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr>
+            <tr><td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table></div>
+        <p class="rsvp-result" id="rsvp-result"></p>
+        <div class="calendar-actions">
+        <a class="rsvp-submit calendar-save" id="calendar-ics" href="assets/ha-linh-1st-birthday.ics"><svg class="calendar-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>iPhone · Outlook</a>
+        <a class="rsvp-submit calendar-save" id="calendar-save" href="https://calendar.google.com/calendar/r/eventedit?action=TEMPLATE&amp;text=H%C3%A0%20Linh%E2%80%99s%201st%20Birthday&amp;dates=20261220T110000Z%2F20261220T130000Z&amp;stz=Asia%2FHo_Chi_Minh&amp;etz=Asia%2FHo_Chi_Minh&amp;location=Cocotte%20Restaurant%20%E2%80%93%20SILA%20Urban%20Living%2C%2021%20Ng%C3%B4%20Th%E1%BB%9Di%20Nhi%E1%BB%87m%2C%20ph%C6%B0%E1%BB%9Dng%20Xu%C3%A2n%20H%C3%B2a%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%20City&amp;details=Ti%E1%BB%87c%20th%C3%B4i%20n%C3%B4i%20H%C3%A0%20Linh%20%C2%B7%20Ch%E1%BB%A7%20nh%E1%BA%ADt%2C%2020.12.2026%20l%C3%BAc%2018%3A00%20(gi%E1%BB%9D%20Vi%E1%BB%87t%20Nam)." target="_blank" rel="noopener noreferrer"><svg class="calendar-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>Google Calendar</a>
+        </div>
+        <button type="button" class="game-open game-open-panel" id="calendar-game"><span aria-hidden="true">✧</span> Đoán xem bé bốc gì</button>
+        <button type="button" class="guest-back" id="calendar-back">← Về thiệp mời</button></div>
+      </section>
+      <section class="guest-panel kid-panel game-panel" id="game-scene" aria-labelledby="game-title" hidden><div class="kp-body">
+        <p class="guest-kicker">HÀ LINH’S 1ST BIRTHDAY</p>
+        <h2 id="game-title" tabindex="-1">Đoán xem bé bốc gì?</h2>
+        <p class="game-intro" id="game-intro">Theo phong tục thôi nôi, bé sẽ chọn một món đồ trong mâm. Bạn đoán Hà Linh sẽ bốc món nào?</p>
+        <div class="game-grid" id="game-grid" role="group" aria-labelledby="game-title">
+          <button type="button" class="game-item" data-item="but" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M21.5 4.5l6 6L13 25l-7.5 1.5L7 19z"/><path d="M18.5 7.5l6 6M7 19l6 6M5.5 26.5l-2 2"/></svg><b>Bút</b><small>Nhà văn</small></button>
+          <button type="button" class="game-item" data-item="sach" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 7.5c4-1.8 8-1.6 12 1.2 4-2.8 8-3 12-1.2V26c-4-1.8-8-1.6-12 1.2C12 24.4 8 24.2 4 26z"/><path d="M16 8.7v18.5"/></svg><b>Sách</b><small>Học giả</small></button>
+          <button type="button" class="game-item" data-item="tien" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="9" width="26" height="15" rx="2"/><circle cx="16" cy="16.5" r="3.6"/><path d="M7.5 13v7M24.5 13v7"/></svg><b>Tiền</b><small>Doanh nhân</small></button>
+          <button type="button" class="game-item" data-item="micro" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="12" y="3.5" width="8" height="14" rx="4"/><path d="M8 14.5a8 8 0 0016 0M16 22.5v5M11 28h10"/></svg><b>Micro</b><small>Ca sĩ</small></button>
+          <button type="button" class="game-item" data-item="ongnghe" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 4v7a6 6 0 0012 0V4M5 4h4M17 4h4"/><path d="M13 17v3.5a6.5 6.5 0 0013 0V18"/><circle cx="26" cy="15" r="3"/></svg><b>Ống nghe</b><small>Bác sĩ</small></button>
+          <button type="button" class="game-item" data-item="co" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27.5 4.5L15 17"/><path d="M15 17c-2.6-1.2-6 .3-6.6 3.4-.4 2.2-1.6 4-4.4 4.9 4.6 2.2 10.6 1.4 12.3-2.2 1-2.2.4-4.6-1.3-6.1z"/></svg><b>Cọ vẽ</b><small>Họa sĩ</small></button>
+          <button type="button" class="game-item" data-item="thuoc" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="11" width="26" height="10" rx="1.5"/><path d="M8 11v4M12.5 11v6M17 11v4M21.5 11v6M26 11v4"/></svg><b>Thước</b><small>Kiến trúc sư</small></button>
+          <button type="button" class="game-item" data-item="bong" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11.5"/><path d="M5 12.5c5 .5 9 4.5 9.5 14.8M27 19.5c-5-.5-9-4.5-9.5-14.8"/></svg><b>Quả bóng</b><small>Vận động viên</small></button>
+        </div>
+        <div class="game-results" id="game-results" hidden>
+          <p class="game-pick" id="game-pick" role="status" tabindex="-1"></p>
+          <ol class="game-bars" id="game-bars"></ol>
+          <p class="game-note" id="game-note"></p>
+          <button type="button" class="guest-back game-change" id="game-change">Đổi lựa chọn</button>
+        </div>
+        <button type="button" class="guest-back" id="game-back">← Về thiệp mời</button></div>
+      </section>
     </section>
   </div>
   <div class="status" id="status" role="status" aria-live="polite"></div>
-  <noscript><div class="noscript">You're invited to Aristia's 1st birthday · 18:00, 20.12.2026 · Cocotte Restaurant, SILA Urban Living, 21 Ngô Thời Nhiệm, Xuân Hòa, HCM City. Bật JavaScript để mở thiệp tương tác.</div></noscript>
-  <script src="app.js"></script>
+  <noscript><div class="noscript">Trân trọng mời bạn dự tiệc thôi nôi Hà Linh · 18:00 Chủ nhật 20.12.2026 · Nhà hàng Cocotte, SILA Urban Living, 21 Ngô Thời Nhiệm, phường Xuân Hòa, TP.HCM. Bật JavaScript để mở thiệp tương tác.</div></noscript>
+  <script src="i18n.js?v=single-game-entry"></script>
+  <audio id="background-music" src="assets/Snowflakes_on_the_Cake.mp3" preload="metadata" loop></audio>
+  <script src="background-audio.js?v=snowflakes-1"></script>
+  <script src="scenery.js?v=perf-1"></script>
+  <script src="sleigh.js?v=nine-trail-orig"></script>
+  <script src="app.js?v=sheets-confirmed-save"></script>
+  <script src="delight.js?v=single-game-entry"></script>
+  <script src="card-kid.js?v=5"></script>
 </body>
 </html>

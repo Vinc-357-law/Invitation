@@ -1,0 +1,14 @@
+.language-switch{display:flex;gap:4px;padding:3px;border:1px solid #f8f0df55;border-radius:28px;background:#101e30d9;backdrop-filter:blur(12px);color:var(--cream)}
+.language-switch button{min-width:44px;min-height:44px;padding:0 12px;border-radius:24px;background:transparent;font:500 12px var(--sans);transition:background .2s,color .2s}
+.language-switch button[aria-pressed=true]{background:var(--cream);color:var(--ink)}
+.language-switch button:hover{background:#f8f0df26}.language-switch button[aria-pressed=true]:hover{background:var(--cream)}
+.language-switch button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.dialog-language{position:fixed;top:max(22px,env(safe-area-inset-top));right:84px;z-index:30}
+.header{padding-top:max(25px,env(safe-area-inset-top))}
+html[lang=vi] h1{font-size:clamp(44px,5vw,76px);line-height:1.05;max-width:760px;margin-left:auto;margin-right:auto;text-wrap:balance}
+html[lang=vi] .subtitle{max-width:90%;margin-left:auto;margin-right:auto;text-wrap:balance}
+html[lang=vi] .birthday sup{font-size:16px;top:0;margin-left:5px}
+html[lang=vi] .invited{font-size:38px}
+html[lang=vi] .signoff{font-size:22px}
+@media(max-width:700px){.language-switch button{padding:0 10px}.dialog-language{right:76px}.dialog-sound{max-width:calc(100vw - 228px);padding:0 10px;font-size:10px}html[lang=vi] h1{font-size:46px;max-width:340px}.intro .eyebrow{letter-spacing:1.4px}.intro{top:20%}.subtitle{padding:0 16px}.receive-hint{max-width:90%;line-height:1.5}.experience{padding-top:96px}.envelope-heading{text-align:center;line-height:1.6}}
+@media(max-width:360px){.language-switch button{padding:0 8px}.dialog-language{right:70px}.dialog-sound{left:12px;max-width:88px}.close{right:12px}html[lang=vi] h1{font-size:41px}}

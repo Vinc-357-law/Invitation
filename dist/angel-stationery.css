@@ -1,0 +1,266 @@
+.angel-envelope, .invitation { 
+    --w: min(84vw, 480px);
+    --h: calc(var(--w) * .7);
+
+    --bg-1: #6e2434;     /* nền đỏ rượu vang */
+    --bg-2: #4a1522;
+    --bg-3: #2c0a13;
+    --pink-l: #e1c4ba;   /* phong bì hồng phấn trầm (dusty blush) */
+    --pink:   #d7b5aa;
+    --pink-d: #c69f94;
+    --ivory:  #fbf4ea;   /* giấy thiệp ngà */
+    --lace:   #cf959d;   /* viền hoa văn hồng */
+    --ink:    #9b7253;   /* chữ nâu vàng */
+    --gold:   #d9b06a;
+    --gold-d: #a87b32;
+
+    --liner: url("assets/angel-liner.jpg");
+    --noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .25  0 0 0 0 .28  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>");
+    --cotton: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='c'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch' result='t'/><feDiffuseLighting in='t' surfaceScale='.7' diffuseConstant='1.3' lighting-color='%23fff'><feDistantLight azimuth='235' elevation='58'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>");
+    --mottle: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .38  0 0 0 0 .35  0 0 0 .35 -.05'/></filter><rect width='100%' height='100%' filter='url(%23m)'/></svg>");
+    --fiber: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .09' numOctaves='2'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 -.12'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+}
+.angel-definitions { position:absolute; pointer-events:none; }
+.angel-envelope { position:relative; width:var(--w); height:var(--h); perspective:1600px; }
+.ref-env-shadow{
+    position:absolute;left:2%;right:2%;bottom:-7%;height:32%;
+    background:radial-gradient(50% 50% at 50% 50%, rgba(15,0,5,.6), transparent 70%);
+    filter:blur(12px);z-index:0
+  }
+  .ref-env-shadow::after{ /* bóng tiếp xúc sát mặt bàn */
+    content:"";position:absolute;left:2%;right:2%;top:58%;height:22%;
+    background:rgba(15,0,5,.55);filter:blur(4px);border-radius:50%
+  }
+  /* khối phồng + mép gấp bo tròn của phong bì */
+  .ref-env-shade{
+    position:absolute;inset:0;z-index:6;pointer-events:none;border-radius:2px;
+    background:
+      radial-gradient(58% 52% at 44% 46%, rgba(255,244,238,.2), transparent 72%),
+      radial-gradient(130% 110% at 50% 50%, transparent 58%, rgba(90,40,35,.2) 100%);
+    box-shadow:
+      inset 0 1.5px 1px rgba(255,242,236,.5),
+      inset 1.5px 0 1px rgba(255,242,236,.3),
+      inset 0 -2px 3px rgba(90,40,35,.22),
+      inset -2px 0 3px rgba(90,40,35,.14),
+      inset 0 0 14px rgba(90,40,35,.1);
+    transition:opacity .8s
+  }
+  .angel-envelope.opening .ref-env-shade{opacity:.65}
+
+  .ref-paper{
+    position:absolute;inset:0;
+    background-image:var(--cotton), var(--mottle), var(--fiber), linear-gradient(var(--c1), var(--c2));
+    background-size:260px 260px, 400px 400px, 300px 300px, 100% 100%;
+    background-blend-mode:multiply, multiply, soft-light, normal;
+  }
+
+  /* ---------- MẶT SAU (bên trong) ---------- */
+  .ref-back{position:absolute;inset:0;z-index:1;filter:url(#angel-deckleEnv) drop-shadow(0 1.2px 0 #b9968b) drop-shadow(.4px 1.2px 0 #a3806f) drop-shadow(.4px 1.3px 0 #8f6c62) drop-shadow(0 2px 3px rgba(20,0,5,.4))}
+  .ref-back .ref-paper{--c1:#c29b90;--c2:#b98f84;border-radius:3px}
+  .ref-back .ref-liner-in{
+    position:absolute;left:5%;right:5%;top:3.5%;height:64%;
+    background:var(--liner) center 22% / cover;
+    filter:saturate(.92) brightness(1.03);
+    box-shadow:inset 0 0 30px rgba(110,50,60,.35);
+  }
+
+  
+.ref-pocket{position:absolute;inset:0;z-index:3;filter:url(#angel-deckleEnv)}
+  .ref-pocket .ref-piece{position:absolute;inset:0}
+  .ref-p-left .ref-paper{--c1:#d9b8ad;--c2:#cfaa9f;background-image:var(--cotton), var(--mottle), var(--fiber), linear-gradient(100deg,var(--c1) 30%,var(--c2));clip-path:url(#angel-cpLeft)}
+  .ref-p-right .ref-paper{--c1:#d4b1a6;--c2:#cca79c;background-image:var(--cotton), var(--mottle), var(--fiber), linear-gradient(260deg,var(--c1) 30%,var(--c2));clip-path:url(#angel-cpRight)}
+  .ref-p-bottom .ref-paper{--c1:#d0aba0;--c2:#dbbcb1;clip-path:url(#angel-cpBottom)}
+  .ref-p-left{filter:drop-shadow(.6px .4px 0 #ead4cb) drop-shadow(1.1px .7px 0 #a7837a) drop-shadow(2px 2px 3px rgba(80,35,30,.32))}
+  .ref-p-right{filter:drop-shadow(-.6px .4px 0 #ead4cb) drop-shadow(-1.1px .7px 0 #a7837a) drop-shadow(-2px 2px 3px rgba(80,35,30,.32))}
+  .ref-p-bottom{filter:drop-shadow(0 -.8px 0 #eddad1) drop-shadow(0 -1.3px 0 #b08c81) drop-shadow(0 -2px 4px rgba(80,35,30,.32))}
+  .ref-foil{ /* hoa văn ép kim trên túi */
+    position:absolute;left:50%;top:76%;width:28%;
+    transform:translate(-50%,-50%);z-index:4;opacity:.9;pointer-events:none
+  }
+
+  /* ---------- NẮP PHONG BÌ ---------- */
+  .ref-flap{
+    position:absolute;left:0;top:0;width:100%;height:63%;
+    z-index:5;transform-origin:50% 0;transform-style:preserve-3d;
+    transition:transform 1s cubic-bezier(.45,0,.25,1), z-index 0s 0s;
+  }
+  .ref-flap{will-change:transform}
+  .angel-envelope.opening .ref-flap{
+    transform:rotateX(180deg);z-index:0;
+    transition:transform 1.05s cubic-bezier(.5,0,.2,1) .14s, z-index 0s .66s;
+  }
+  .ref-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .ref-face .ref-fx{position:absolute;inset:0;filter:url(#angel-deckleEnv)}
+  .ref-face.ref-front .ref-fx{filter:url(#angel-deckleEnv) drop-shadow(0 .8px 0 #ecd7ce) drop-shadow(.3px 1.6px 0 #a07c71) drop-shadow(0 4px 5px rgba(70,30,25,.36)) drop-shadow(0 10px 14px rgba(70,30,25,.14))}
+  .ref-face.ref-front .ref-paper{--c1:#dcbdb2;--c2:#cfa99e;clip-path:url(#angel-cpFlapF)}
+  .ref-face.ref-back{transform:rotateX(180deg)}
+  .ref-face.ref-back .ref-paper{--c1:#cfaba0;--c2:#dcbdb2;clip-path:url(#angel-cpFlapB)}
+  .ref-face.ref-back .ref-liner{
+    position:absolute;inset:0;
+    clip-path:url(#angel-cpLiner);
+    background:var(--liner) center 12% / cover;
+  }
+  .ref-face.ref-back .ref-liner::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(110,50,60,.28), transparent 25%);
+  }
+
+  /* ---------- CON DẤU SÁP (mở thiệp) ---------- */
+  .ref-seal{
+    position:absolute;left:50%;top:63%;
+    width:max(44px, calc(var(--w) * .205));aspect-ratio:403/420;
+    transform:translate(-50%,-50%) rotate(-4deg);
+    z-index:7;border:0;background:none;cursor:pointer;padding:0;
+    transition:transform .35s ease, opacity .45s ease;
+    filter:drop-shadow(0 1px 1px rgba(60,10,10,.45)) drop-shadow(0 5px 7px rgba(70,15,20,.35));
+  }
+  .ref-seal img{width:100%;height:100%;display:block;object-fit:contain;user-select:none}
+  .ref-seal:hover{transform:translate(-50%,-52%) rotate(-4deg) scale(1.04)}
+  .ref-seal:focus-visible{outline:2px dashed #e7b9c0;outline-offset:6px;border-radius:50%}
+  .ref-seal::before{
+    content:"";position:absolute;inset:-14%;border-radius:50%;
+    border:1px solid rgba(150,40,45,.55);
+    animation:angel-pulse 2.4s ease-out infinite
+  }
+  @keyframes angel-pulse{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+  /* mở: nhấc dấu lên rồi biến mất */
+  .angel-envelope.opening .ref-seal{
+    transform:translate(-50%,-78%) scale(1.12) rotate(-16deg);opacity:0;pointer-events:none;
+    transition:transform .55s cubic-bezier(.3,.6,.4,1), opacity .5s ease .08s;
+  }
+  .angel-envelope.opening .ref-seal::before{animation:none;opacity:0}
+  
+/* Adapt the supplied stationery to the existing invitation flow. */
+.envelope-scene.extracting-envelope { position:absolute; inset-inline:0; pointer-events:none; }
+.card-scene.letter-extracted { animation:none; }
+.extracting-card .invitation { transform-origin:top left; filter:none; will-change:transform; }
+.angel-envelope { will-change:transform; }
+.extracting-card .replay { visibility:hidden; }
+.invitation { border:solid transparent; border-width:60px 44px; background:#fbf4ea; padding:20px 20px 22px; color:#93694a; border-radius:0; box-shadow:none; filter:drop-shadow(0 12px 25px #0007); transition:filter .6s ease; }
+.invitation .card-border { display:none; }
+.invitation h2 { color:#93694a; }
+.invitation .card-actions button, .invitation .card-actions a { color:#805b40; border-color:#caa6a1; }
+.invitation .rsvp { background:#fbf4ea; border-color:#d6a6ad; color:#805b40; padding:16px 12px; }
+.invitation .rsvp h3 { color:inherit; }
+.invitation .rsvp-options label:has(:checked) { background:#f2e0dc; border-color:#a57476; }
+.invitation .rsvp-submit { background:#875659; color:#fff9ed; }
+.angel-envelope.falling-letter {
+  --w: 104px;
+  position: fixed;
+  z-index: 12;
+  pointer-events: none;
+  animation: letter-fall 1.25s cubic-bezier(.42,.08,.45,1) forwards, letter-appear .3s ease-out both;
+  will-change: transform;
+}
+/* The deckle and drop-shadow filters are invisible at this size but costly to paint mid-flight. */
+.falling-letter .ref-back, .falling-letter .ref-pocket, .falling-letter .ref-piece, .falling-letter .ref-fx { filter:none !important; }
+.falling-letter .ref-env-shadow { display:none; }
+.falling-letter .ref-seal { width: calc(var(--w) * .205); }
+.falling-letter .ref-seal::before { display: none; }
+@media(max-width:700px) { .invitation { border-width:44px 30px; border-image-width:44px 30px; padding:14px 12px 18px; } .invitation h2 { font-size:56px; } .invitation .invited { font-size:42px; } .invitation .card-kicker { letter-spacing:1px; } .invitation .signoff { font-size:21px; } .invitation .card-actions { flex-wrap:wrap; } }
+/* Compact card: a 5×7-like sheet that fits one screen; date and venue sit side by side. */
+.card-scene { width:min(460px,100%); }
+.invitation { border-width:46px 34px; border-image-width:46px 34px; padding:4px 12px 8px; }
+.invitation .invited { font-size:40px; line-height:1.05; margin:0 0 4px; }
+.invitation .card-kicker { font-size:7px; letter-spacing:1.8px; margin:0 0 10px; }
+.invitation h2 { font-size:54px; line-height:.95; }
+.invitation .birthday { font-size:26px; margin:0 0 4px; }
+.invitation .birthday span { font-size:46px; }
+.invitation .birthday sup { font-size:16px; top:-7px; }
+.invitation .ornament { font-size:17px; gap:10px; }
+.invitation .ornament span { width:58px; }
+.invitation .card-message { font-size:15px; line-height:1.45; margin:6px 0 12px; }
+.event-info { display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:10px 0; border-block:1px solid #caa6a166; }
+.event-info .date-block { padding-right:10px; }
+.event-info .date-block p { font-size:8px; letter-spacing:1.3px; margin:0 0 5px; }
+.event-info .date-block strong { font-size:32px; }
+.event-info .date-block > span { font-size:6.5px; letter-spacing:1.2px; margin-top:6px; }
+.event-info .venue { margin:0; padding-left:10px; border-left:1px solid #caa6a166; }
+.event-info .venue p { font-size:8.5px; letter-spacing:1.3px; margin:0 0 3px; }
+.event-info .venue > span { font-size:16px; line-height:1.2; display:block; }
+.event-info address { font-size:12.5px; line-height:1.4; margin-top:3px; }
+.invitation .signoff { font-size:21px; margin:12px -6px 10px; }
+.invitation .card-actions { display:grid; grid-template-columns:1fr auto; gap:8px; align-items:stretch; flex-wrap:nowrap; }
+.invitation .card-actions #rsvp-open { margin:0; min-height:44px; padding:8px 12px; border:0; border-radius:4px; background:#875659; color:#fff9ed; font:500 13px var(--sans); transition:background .2s, transform .15s; }
+.invitation .card-actions #rsvp-open:hover { background:#9a6669; }
+.invitation .card-actions #rsvp-open:active { transform:scale(.98); }
+.invitation .card-actions a { display:flex; align-items:center; gap:6px; padding:0 14px; white-space:nowrap; }
+.invitation .card-actions a span { margin-left:0; }
+.invitation .card-bottom { margin:12px 0 0; }
+.replay { margin-top:8px; }
+@media(max-width:700px) {
+  .invitation { border-width:36px 26px; border-image-width:36px 26px; padding:2px 6px 6px; }
+  .invitation .invited { font-size:36px; }
+  .invitation h2 { font-size:48px; }
+  .invitation .birthday { font-size:23px; }
+  .invitation .birthday span { font-size:40px; }
+  .invitation .card-message { font-size:14px; margin:4px 0 10px; }
+  .event-info .date-block { padding-right:6px; }
+  .event-info .venue { padding-left:8px; }
+  .event-info .date-block strong { font-size:28px; }
+  .event-info .venue > span { font-size:14.5px; }
+  .event-info address { font-size:11.5px; }
+  .invitation .signoff { font-size:19px; margin:10px -4px 8px; }
+  .experience { padding-top:70px; }
+}
+@media(max-width:400px) {
+  .invitation { border-width:34px 22px; border-image-width:34px 22px; }
+  .event-info .venue { padding-left:6px; }
+  .event-info .venue p { letter-spacing:.8px; }
+  .event-info .venue > span { font-size:13.5px; }
+  .event-info address { font-size:11px; }
+  .event-info .date-block > span { letter-spacing:.6px; }
+}
+@media(max-height:720px) {
+  .invitation .invited { font-size:32px; }
+  .invitation h2 { font-size:42px; }
+  .invitation .birthday { font-size:21px; }
+  .invitation .birthday span { font-size:34px; }
+  .invitation .card-kicker { margin-bottom:6px; }
+  .invitation .card-message { margin:2px 0 8px; }
+  .invitation .signoff { margin:8px -4px 6px; }
+  .invitation .card-bottom { margin-top:8px; }
+}
+@media(prefers-reduced-motion:reduce) { .angel-envelope *, .angel-envelope *::before { animation:none!important; transition-duration:.01ms!important; transition-delay:0s!important; } .angel-envelope.falling-letter { display:none; } }
+
+/* ---------- Paper B: deckle-edged ivory cotton card with a gold-foil double frame ----------
+   Shared by the invitation, the RSVP form and the calendar so the three read as one stationery set.
+   Both images are viewBox-less SVGs laid out in real pixels, so the sheet never looks stretched. */
+.invitation, .guest-panel {
+  position:relative; isolation:isolate;
+  border:0; border-image:none; border-radius:0; background:none; box-shadow:none;
+  filter:drop-shadow(0 16px 22px rgba(8,5,4,.42)) drop-shadow(0 2px 3px rgba(60,35,20,.22));
+}
+.invitation::before, .guest-panel::before {
+  content:''; position:absolute; inset:-8px; z-index:-2; opacity:1; pointer-events:none;
+  background:url('assets/paper-deckle.svg') 0 0 / 100% 100% no-repeat;
+}
+.invitation::after, .guest-panel::after {
+  content:''; position:absolute; inset:12px; z-index:-1; pointer-events:none;
+  background:url('assets/card-corners.svg') 0 0 / 100% 100% no-repeat;
+}
+.invitation { padding:42px 38px 30px; color:#8e6446; }
+.guest-panel { width:min(460px,100%); padding:46px 42px 34px; color:#6e4430; }
+@media(max-width:700px) {
+  .invitation { padding:36px 26px 26px; }
+  .guest-panel { padding:40px 28px 28px; }
+  .invitation::after, .guest-panel::after { inset:9px; }
+}
+@media(max-width:400px) { .invitation { padding:34px 22px 24px; } }
+@media(max-height:720px) { .invitation { padding-top:34px; padding-bottom:22px; } }
+
+/* Guest pages in the invitation's palette. */
+.guest-panel h2, .event-calendar caption { color:#8a5d40; }
+.guest-kicker { color:#a07a58; letter-spacing:2.4px; }
+.guest-panel .rsvp-note, .calendar-details, .rsvp-result { color:#7a5440; }
+.guest-panel .rsvp-submit, .calendar-panel a.rsvp-submit { background:#875659; color:#fff9ed; }
+.guest-panel .rsvp-submit:hover, .calendar-panel a.rsvp-submit:hover { background:#9a6669; }
+.guest-panel .guest-back { color:#7a5440; }
+.event-calendar th { border-bottom-color:#d9bfae; color:#8a6a52; }
+.event-calendar td { color:#7a5a46; }
+.event-day { background:#875659; box-shadow:0 0 0 4px #87565922; }
+.rsvp-options label { border-color:#d6bba8; background:#fffdf880; }
+.rsvp-options label:has(:checked) { border-color:#a57476; background:#f2e0dc; }
+.rsvp input[type=radio] { accent-color:#875659; }
+.rsvp-counts input, .rsvp-name input { border-color:#d3b8a5; background:#fffdf8; color:#6e4430; }
+.guest-panel :is(button,input,a):focus-visible { outline-color:#875659; }

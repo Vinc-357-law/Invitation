@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ha Linh//Thiep moi thoi noi//VI
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ha-linh-1st-birthday-20261220@ha-linh-invitation
+DTSTAMP:20261107T000000Z
+DTSTART:20261220T110000Z
+DTEND:20261220T130000Z
+SUMMARY:Hà Linh’s 1st Birthday · Tiệc thôi nôi
+LOCATION:Nhà hàng Cocotte – SILA Urban Living\, 21 Ngô Thời Nhiệm\
+ , phường Xuân Hòa\, TP. Hồ Chí Minh
+DESCRIPTION:Tiệc thôi nôi Hà Linh · Chủ nhật 20.12.2026 lúc 18:0
+ 0 (giờ Việt Nam).\nBản đồ: https://www.google.com/maps/search/?ap
+ i=1&query=Cocotte+SILA+Urban+Living+21+Ngo+Thoi+Nhiem+Ho+Chi+Minh
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Ngày mai là tiệc thôi nôi Hà Linh
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tiệc thôi nôi Hà Linh bắt đầu lúc 18:00
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
