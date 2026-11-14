@@ -1,12 +1,12 @@
 /* ---------- The invitation sheet: the pink first-birthday poster ----------
-   The artwork is designed on a 1080 × 1920 canvas. --u is 1/1080 of the card's width, so every
+   The artwork is designed on a 1080 × 2040 canvas. --u is 1/1080 of the card's width, so every
    position and font size below is a canvas number and the poster scales as one piece on any screen. */
 .card-scene{container-type:inline-size;width:min(400px,100%)}
 .invitation.kid-card{
   --u:calc(100cqw / 1080);
   --ink:#8a2f52;--berry:#c93a6c;--berry-2:#a92a56;--cream:#fff8f3;--blush:#fbd5e0;
   position:relative;isolation:isolate;overflow:hidden;
-  width:100%;aspect-ratio:1080 / 1920;padding:0;margin:0;
+  width:100%;aspect-ratio:1080 / 2040;padding:0;margin:0;
   border:0;border-image:none;border-radius:calc(56 * var(--u));
   background:#fce1e9;color:var(--ink);text-align:left;text-shadow:none;
   font-family:'Baloo 2',system-ui,sans-serif;
@@ -37,45 +37,45 @@ html[lang=en] .invitation.kid-card h2{font-size:calc(100 * var(--u))}
 
 .kc-age{position:absolute;left:calc(260 * var(--u));top:calc(640 * var(--u));width:calc(560 * var(--u));height:calc(76 * var(--u));border-radius:calc(38 * var(--u));background:var(--berry);color:var(--cream);display:flex;align-items:center;justify-content:center;gap:calc(18 * var(--u));font:800 calc(46 * var(--u))/calc(76 * var(--u)) 'Baloo 2',system-ui,sans-serif;transform:rotate(-2deg)}
 
-.kc-pill{position:absolute;top:calc(1150 * var(--u));width:calc(315 * var(--u));height:calc(200 * var(--u));border-radius:calc(40 * var(--u));background:var(--blush);display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 calc(42 * var(--u))/calc(52 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.kc-pill{position:absolute;top:calc(1130 * var(--u));width:calc(315 * var(--u));height:calc(200 * var(--u));border-radius:calc(40 * var(--u));background:var(--blush);display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 calc(42 * var(--u))/calc(52 * var(--u)) 'Baloo 2',system-ui,sans-serif}
 .kc-pill-l{left:calc(70 * var(--u));transform:rotate(-3deg)}
 .kc-pill-r{left:calc(695 * var(--u));transform:rotate(3deg)}
 .kc-pill .kc-num{font-size:calc(90 * var(--u));line-height:calc(104 * var(--u));color:var(--berry-2)}
 
-.kc-date{position:absolute;left:calc(405 * var(--u));top:calc(1115 * var(--u));width:calc(270 * var(--u));height:calc(270 * var(--u));border-radius:50%;background:var(--berry);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 calc(42 * var(--u))/calc(50 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.kc-date{position:absolute;left:calc(405 * var(--u));top:calc(1095 * var(--u));width:calc(270 * var(--u));height:calc(270 * var(--u));border-radius:50%;background:var(--berry);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 calc(42 * var(--u))/calc(50 * var(--u)) 'Baloo 2',system-ui,sans-serif}
 .kc-date .kc-num{font-size:calc(132 * var(--u));line-height:calc(124 * var(--u))}
 
-.kc-venue{position:absolute;left:calc(70 * var(--u));top:calc(1415 * var(--u));width:calc(940 * var(--u));height:calc(320 * var(--u));box-sizing:border-box;border-radius:calc(48 * var(--u));background:var(--blush);padding:calc(14 * var(--u))}
-.kc-venue-in{height:100%;box-sizing:border-box;border:calc(5 * var(--u)) dashed #fff;border-radius:calc(36 * var(--u));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:600 calc(42 * var(--u))/calc(54 * var(--u)) 'Baloo 2',system-ui,sans-serif}
-.kc-venue-name{display:flex;align-items:center;justify-content:center;gap:calc(14 * var(--u));font-size:calc(72 * var(--u));line-height:calc(84 * var(--u));font-weight:800}
-.kc-venue-sub{font-size:calc(50 * var(--u));line-height:calc(62 * var(--u));font-weight:700;color:var(--berry-2)}
+.kc-venue{position:absolute;left:calc(70 * var(--u));top:calc(1385 * var(--u));width:calc(940 * var(--u));height:calc(290 * var(--u));box-sizing:border-box;border-radius:calc(48 * var(--u));background:var(--blush);padding:calc(14 * var(--u))}
+.kc-venue-in{height:100%;box-sizing:border-box;border:calc(5 * var(--u)) dashed #fff;border-radius:calc(36 * var(--u));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:600 calc(40 * var(--u))/calc(50 * var(--u)) 'Baloo 2',system-ui,sans-serif}
+.kc-venue-name{display:flex;align-items:center;justify-content:center;gap:calc(14 * var(--u));font-size:calc(72 * var(--u));line-height:calc(80 * var(--u));font-weight:800}
+.kc-venue-sub{font-size:calc(48 * var(--u));line-height:calc(58 * var(--u));font-weight:700;color:var(--berry-2)}
 
-.invitation.kid-card .kc-close{position:absolute;left:calc(160 * var(--u));top:calc(1766 * var(--u));width:calc(760 * var(--u));text-align:center;font:600 calc(40 * var(--u))/calc(54 * var(--u)) 'Baloo 2',system-ui,sans-serif}
-
-/* The poster has no room for controls, so the RSVP and map buttons sit just under it. */
-.card-scene .card-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
-.extracting-card .card-actions{visibility:hidden}
-.card-scene .card-actions #rsvp-open,.card-scene .card-actions a{width:auto;min-height:46px;margin:0;display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;font:700 16px/1 'Baloo 2',system-ui,sans-serif;letter-spacing:0;box-shadow:0 4px 12px rgba(40,12,30,.35);transition:transform .15s,background .2s}
-.card-scene .card-actions #rsvp-open{padding:0 24px;background:#c93a6c;color:#fff8f3}
-.card-scene .card-actions #rsvp-open:hover{background:#d9527f}
-.card-scene .card-actions a{padding:0 20px;background:#fff8f3;color:#8a2f52}
-.card-scene .card-actions a:hover{background:#fff}
-.card-scene .card-actions #rsvp-open:active,.card-scene .card-actions a:active{transform:scale(.97)}
-.card-scene .card-actions a span{margin-left:0}
+/* The reply and map buttons are part of the card, under the venue, with the closing words below them.
+   They keep a usable tap height on small screens; the closing words simply move down if so. */
+.kc-foot{position:absolute;left:calc(130 * var(--u));top:calc(1720 * var(--u));width:calc(820 * var(--u));display:flex;flex-direction:column;align-items:center;gap:calc(30 * var(--u))}
+.kc-actions{display:flex;justify-content:center;gap:calc(20 * var(--u));width:100%}
+.kc-actions #rsvp-open,.kc-actions a{display:inline-flex;align-items:center;justify-content:center;gap:calc(10 * var(--u));height:calc(112 * var(--u));min-height:32px;margin:0;padding:0 calc(36 * var(--u));border-radius:999px;font:800 max(12px,calc(44 * var(--u)))/1 'Baloo 2',system-ui,sans-serif;letter-spacing:0;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .15s,background .2s}
+.kc-actions #rsvp-open{flex:1 1 auto;width:auto;border:0;background:var(--berry);color:var(--cream);box-shadow:0 calc(8 * var(--u)) 0 var(--berry-2)}
+.kc-actions #rsvp-open:hover{background:#d9527f}
+.kc-actions a{flex:none;border:calc(5 * var(--u)) solid var(--berry);background:var(--cream);color:var(--berry-2)}
+.kc-actions a:hover{background:#fff}
+.kc-actions #rsvp-open:active,.kc-actions a:active{transform:translateY(2px)}
+.kc-actions #rsvp-open:focus-visible,.kc-actions a:focus-visible{outline:3px solid #f6cd6b;outline-offset:3px}
+.invitation.kid-card .kc-close{text-align:center;font:600 calc(34 * var(--u))/calc(42 * var(--u)) 'Baloo 2',system-ui,sans-serif}
 
 /* ---------- The envelope: cream paper, a striped airmail border and a reindeer stamp ----------
-   Drawn on a 900 × 1360 canvas. Its layers are stacked directly against the card, not grouped,
+   Drawn on a 900 × 1445 canvas. Its layers are stacked directly against the card, not grouped,
    because the card has to pass between the envelope's back and its front pocket on the way out. */
-.kid-envelope{--w:max(220px,min(88vw,400px,calc((100svh - 216px) / 1.511)));position:relative;width:var(--w);height:calc(var(--w) * 1.5111)}
+.kid-envelope{--envelope-ratio:1.605555556;--w:max(200px,min(88vw,380px,calc((100svh - 300px) / var(--envelope-ratio))));position:relative;cursor:pointer;width:var(--w);height:calc(var(--w) * var(--envelope-ratio))}
 .ke-back,.ke-flap,.ke-front,.ke-seal{position:absolute}
 .ke-back{inset:0;z-index:1;border-radius:0 0 calc(var(--w) * .04) calc(var(--w) * .04);background:#fce1e9;box-shadow:0 calc(var(--w) * .02) 0 #2e6350}
 .ke-back svg{display:block;width:100%;height:auto}
-.ke-flap{left:0;top:0;width:100%;height:32.353%;z-index:5;perspective:calc(var(--w) * 2.67);perspective-origin:50% 0}
+.ke-flap{left:0;top:0;width:100%;height:calc(var(--w) * .488888889);z-index:5;perspective:calc(var(--w) * 2.67);perspective-origin:50% 0}
 .ke-flap-in{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 0;transition:transform .8s ease-in-out}
 .ke-face{position:absolute;inset:0;display:block;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .ke-face-in{transform:rotateX(180deg)}
 .ke-front{inset:0;z-index:4;display:block;width:100%;height:100%}
-.ke-seal{left:37.778%;top:23.529%;width:24.444%;aspect-ratio:1;z-index:6;transition:transform .4s ease,opacity .3s ease}
+.ke-seal{left:37.778%;top:calc(var(--w) * .355555556);width:24.444%;aspect-ratio:1;z-index:6;transition:transform .4s ease,opacity .3s ease}
 .ke-seal svg{display:block;width:100%;height:100%;animation:ke-wiggle 2.4s ease-in-out infinite}
 @keyframes ke-wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
 .kid-envelope.opening .ke-flap-in{transform:rotateX(180deg)}
@@ -83,10 +83,21 @@ html[lang=en] .invitation.kid-card h2{font-size:calc(100 * var(--u))}
 .kid-envelope.opening .ke-seal{opacity:0;transform:scale(.4)}
 .extracting-card{position:relative;z-index:3}
 
-.kid-envelope.falling-letter{--w:104px;position:fixed;z-index:12;pointer-events:none;animation:letter-fall 1.25s cubic-bezier(.42,.08,.45,1) forwards,letter-appear .3s ease-out both;will-change:transform}
+.kid-envelope.falling-letter{--w:104px;cursor:default;position:fixed;z-index:12;pointer-events:none;animation:letter-fall 1.25s cubic-bezier(.42,.08,.45,1) forwards,letter-appear .3s ease-out both;will-change:transform}
 .falling-letter .ke-seal svg{animation:none}
 
 .envelope-scene .envelope-heading{margin:0 0 clamp(12px,2.4vh,22px);max-width:12.2em;text-align:center;font:800 clamp(22px,6.2vw,32px)/1.18 'Baloo 2',system-ui,sans-serif;letter-spacing:0;color:#fff8f3;animation-delay:.2s}
+/* The one thing to tap once the letter has landed. */
+.open-letter{position:relative;display:inline-flex;align-items:center;gap:12px;min-height:60px;margin-top:clamp(16px,2.8vh,26px);padding:0 30px;border:0;border-radius:999px;background:#c8374a;color:#fff8f3;font:800 clamp(19px,5.4vw,23px)/1 'Baloo 2',system-ui,sans-serif;letter-spacing:0;box-shadow:0 6px 0 #a92b3c,0 12px 24px rgba(0,0,0,.2);cursor:pointer;animation:soft-in .5s 1.15s cubic-bezier(.2,.7,.2,1) backwards,open-pulse 1.6s 1.7s ease-in-out infinite;transition:opacity .3s ease}
+.open-letter svg{width:28px;height:28px;flex:none}
+.open-letter::after{content:"";position:absolute;inset:-8px;border-radius:999px;border:3px solid rgba(255,248,243,.66);animation:open-ring 1.6s 1.7s ease-out infinite backwards;pointer-events:none}
+.open-letter:active{translate:0 4px;box-shadow:0 2px 0 #a92b3c}
+.open-letter:focus-visible{outline:3px solid #f6cd6b;outline-offset:8px}
+@keyframes open-pulse{0%,100%{scale:1}50%{scale:1.05}}
+@keyframes open-ring{0%{opacity:.9;transform:scale(.92)}100%{opacity:0;transform:scale(1.18)}}
+.envelope-scene:has(.opening) .open-letter{opacity:0;pointer-events:none;animation:none}
+.envelope-scene:has(.opening) .open-letter::after{animation:none;opacity:0}
+@media(prefers-reduced-motion:reduce){.open-letter,.open-letter::after{animation:none}}
 
 /* Keep the original moonlit landscape visible behind every invitation step. */
 .overlay{scrollbar-gutter:stable}

@@ -1,13 +1,12 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-let stage = 'intro', openingTimer, lastTrigger;
+let stage = 'intro', openingTimer, lastTrigger, guestSession = 0;
 const overlay = $('overlay'), dialog = overlay.querySelector('[role="dialog"]');
 const envelopeScene = $('envelope-scene');
 const cardScene = $('card-scene');
 const invitation = $('card-title').closest('.invitation');
 let extractionAnimations = [];
-const ENVELOPE_REST = 800; // how long the landed envelope stays closed before it opens by itself
 function announce(message) { i18n.text($('status'), message); $('status').classList.add('visible'); clearTimeout(announce.timer); announce.timer = setTimeout(() => $('status').classList.remove('visible'), 3300); }
 function setStep(n) { document.querySelectorAll('.steps i').forEach((el,i) => el.classList.toggle('active',i===n)); }
 function receive(event) {
@@ -33,12 +32,13 @@ function receive(event) {
     stage = 'envelope'; overlay.hidden = false;
     $('world').inert = true; document.body.style.overflow = 'hidden';
     setStep(1);
-    const settle = motion.matches ? 0 : deliverEnvelope(from, fromWidth) + ENVELOPE_REST;
+    const settle = motion.matches ? 0 : deliverEnvelope(from, fromWidth);
     letter.remove();
     dialog.focus({preventScroll: true});
-    openingTimer = setTimeout(openEnvelope, settle);
+    openingTimer = setTimeout(() => { if (stage === 'envelope') $('open-letter').focus({preventScroll: true}); }, settle);
   }, motion.matches ? 80 : 1250);
-  if (!music.started && !music.userMuted) music.start();
+  // A browser only lets music start from a guest's own tap, so a drop the sleigh made on its own waits for the open button.
+  if (event.isTrusted && !music.started && !music.userMuted) music.start();
 }
 
 // Hand the falling letter over to the full-size envelope so it grows from the same spot.
@@ -55,7 +55,46 @@ function deliverEnvelope(from, fromWidth) {
   return duration + 80;
 }
 $('sleigh').addEventListener('click', receive);
-$('receive-hint').addEventListener('click', receive);
+
+// The sleigh lets the letter go by itself as it flies past, so nobody has to find the right spot to tap.
+const DROP_AT = .32; // the sack lets go when it reaches this fraction of the screen width
+const DROP_LEAD = 2200; // on arrival the sleigh is brought in so the drop comes about this many ms later
+let dropArmed = false, sleighCued = false, introSince = 0;
+const sleighFlight = () => $('sleigh').getAnimations().find(animation => (animation.animationName || '').startsWith('cross-sky'));
+const sackX = () => { const rect = $('sleigh').getBoundingClientRect(); return rect.left + rect.width * .16; };
+function cueSleigh() {
+  // The pass takes 12–16 s, so on arrival the sleigh may be far off; move it to just before the drop point.
+  const flight = sleighFlight();
+  if (!flight || flight.currentTime == null) return;
+  const duration = flight.effect.getComputedTiming().duration;
+  const speed = (innerWidth + $('sleigh').offsetWidth * 1.1) / duration; // px per ms, as the flight is linear
+  const target = innerWidth * DROP_AT - speed * DROP_LEAD, now = sackX();
+  if (now > target && now < innerWidth * DROP_AT) return; // already on its way in
+  let time = flight.currentTime + (target - now) / speed;
+  if (time < 0) time += duration;
+  flight.currentTime = time;
+}
+function watchSleigh() {
+  if (stage !== 'intro' || $('loader') || document.visibilityState !== 'visible') { introSince = 0; return; }
+  if (!introSince) introSince = performance.now();
+  if (!sleighCued) { sleighCued = true; cueSleigh(); }
+  if (!sleighFlight()) { // reduced motion: the sleigh rests mid-sky
+    if (performance.now() - introSince > 2600) receive({currentTarget: $('sleigh'), isTrusted: false});
+    return;
+  }
+  const x = sackX();
+  if (x < innerWidth * DROP_AT) dropArmed = true; // seen coming in from the left
+  else if (dropArmed && x < innerWidth * .9) { dropArmed = false; receive({currentTarget: $('sleigh'), isTrusted: false}); }
+}
+setInterval(watchSleigh, 120);
+
+function openFromGuest() {
+  if (stage !== 'envelope') return;
+  if (!music.started && !music.userMuted) music.start();
+  openEnvelope();
+}
+$('open-letter').addEventListener('click', openFromGuest);
+$('envelope').addEventListener('click', openFromGuest);
 
 function clearExtraction() {
   extractionAnimations.forEach(animation => animation.cancel());
@@ -68,6 +107,7 @@ function clearExtraction() {
 }
 
 function finishOpening() {
+  clearTimeout(openingTimer);
   stage = 'card';
   envelopeScene.hidden = true;
   cardScene.hidden = false;
@@ -129,7 +169,12 @@ function openEnvelope() {
   if (motion.matches) finishOpening();
   else extractInvitation();
 }
+// A rotation or reduced-motion change must not leave the card at stale animation coordinates.
+window.addEventListener('resize', () => { if (stage === 'opening') finishOpening(); }, {passive: true});
+motion.addEventListener('change', () => { if (motion.matches && stage === 'opening') finishOpening(); });
 function reset() {
+  guestSession++;
+  dropArmed = false; introSince = 0; // after closing, the next letter comes on the sleigh's next pass
   clearTimeout(openingTimer); clearTimeout(stepSwitch); stage = 'intro'; overlay.hidden = true; $('world').inert = false;
   clearExtraction();
   document.querySelectorAll('.falling-letter').forEach(letter => letter.remove());
@@ -272,8 +317,12 @@ rsvp.addEventListener('submit', async event => {
   }
   store.set('aristia-guest', name);
   const summary = () => attending ? i18n.t('Sẽ đến · {adults} người lớn, {children} trẻ em.', {adults, children}) : i18n.t('Không thể đến.');
+  const submittedIn = guestSession;
   if (sheetsReady) {
     rsvp.classList.add('sending');
+    rsvp.setAttribute('aria-busy', 'true');
+    const fields = [...rsvp.querySelectorAll('input')];
+    fields.forEach(input => { input.disabled = true; });
     rsvpSubmit.disabled = true;
     i18n.text(rsvpSubmit, 'Đang gửi…');
     try {
@@ -286,12 +335,19 @@ rsvp.addEventListener('submit', async event => {
       return;
     } finally {
       rsvp.classList.remove('sending');
+      rsvp.removeAttribute('aria-busy');
+      fields.forEach(input => { input.disabled = false; });
+      const countsDisabled = rsvp.elements.attendance.value !== 'yes';
+      adultCount.disabled = countsDisabled;
+      childCount.disabled = countsDisabled;
       rsvpSubmit.disabled = false;
       i18n.text(rsvpSubmit, rsvpSubmitText);
     }
   } else {
     i18n.text(rsvpResult, 'Phản hồi thử: {summary}', {summary});
   }
+  // The answer is still saved if the guest closes the dialog while waiting.
+  if (submittedIn !== guestSession || overlay.hidden || stage !== 'rsvp') return;
   document.dispatchEvent(new CustomEvent('rsvp:sent', {detail: {attending, from: rsvpSubmit.getBoundingClientRect()}}));
   showGuestStep('calendar', 'calendar-title');
 });

@@ -52,10 +52,10 @@ window.i18n = (() => {
     ['#headline', 'Một phép màu Giáng sinh', 'A little Christmas'],
     ['#headline em', 'bé nhỏ.', 'miracle.'],
     ['.subtitle', 'Mùa của những điều kỳ diệu. Một năm ngập tràn yêu thương.', 'A season of wonder. A year of love.'],
-    ['#receive-hint', 'Chạm vào xe tuần lộc để nhận thiệp ', 'Tap the sleigh to receive your invitation '],
+    ['#open-letter', 'Nhấn để mở thiệp', 'Tap to open'],
     ['.guest-kicker', 'MỪNG THÔI NÔI HÀ LINH', 'HÀ LINH’S 1ST BIRTHDAY'],
     ['.footer-place', 'GỬI YÊU THƯƠNG DƯỚI TRĂNG GIÁNG SINH', 'WITH LOVE, UNDER THE CHRISTMAS MOON'],
-    ['.envelope-heading', 'Có một lá thư Giáng sinh gửi đến cả nhà!', 'A Christmas letter for the whole family!'],
+    ['.envelope-heading', 'Hà Linh có một lá thư muốn gửi đến cho bạn', 'Hà Linh has a letter she wants to send you'],
     ['.kc-invite', 'Thân mời cả nhà đến chung vui', 'You’re warmly invited to celebrate'],
     ['#card-title', 'Tiệc thôi nôi', 'First Birthday Party'],
     ['.kc-age-text', 'Bé tròn 1 tuổi rồi!', 'One year old!'],
@@ -68,7 +68,7 @@ window.i18n = (() => {
     ['.kc-close-1', 'Sự hiện diện của cả nhà là món quà', 'Your presence is the sweetest'],
     ['.kc-close-2', 'Giáng sinh ngọt ngào nhất của bé', 'Christmas gift for our little one'],
     ['#rsvp-open, #rsvp-title', 'Xác nhận tham dự', 'RSVP'],
-    ['.card-actions a', 'Bản đồ ', 'Map '],
+    ['.kc-actions a', 'Bản đồ ', 'Map '],
     ['#calendar-game', ' Đoán xem bé bốc gì', ' Guess what Hà Linh will pick'],
     ['#replay', ' Xem lại phép màu', ' Replay the magic'],
     ['.rsvp-name', 'Tên khách mời ', 'Your name '],
@@ -96,7 +96,7 @@ window.i18n = (() => {
     bind(`[data-item="${key}"] b`, vi, en); bind(`[data-item="${key}"] small`, roleVi, roleEn);
   });
   [
-    ['#sleigh','Chạm xe tuần lộc để nhận thiệp mời','Tap the sleigh to receive your invitation'],
+    ['#sleigh','Nhận thiệp mời','Receive your invitation'],
     ['.invitation-cue','Nhận thiệp mời','Receive your invitation'],
     ['.experience','Món quà thiệp mời của Hà Linh','Your invitation from Hà Linh'],
     ['#close','Đóng thiệp','Close invitation'],

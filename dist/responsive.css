@@ -1,0 +1,68 @@
+/* The artwork keeps its original ratio; controls keep their normal touch size. */
+:root{--stage-top:calc(76px + env(safe-area-inset-top));--stage-bottom:calc(12px + env(safe-area-inset-bottom))}
+.world{min-height:0;height:100svh;height:100dvh}
+.overlay{scrollbar-gutter:auto;overscroll-behavior:contain}
+.experience{min-height:100svh;min-height:100dvh;padding:var(--stage-top) max(16px,env(safe-area-inset-right)) var(--stage-bottom) max(16px,env(safe-area-inset-left));align-items:safe center}
+.card-scene{display:flex;flex-direction:column;align-items:center;gap:8px;animation:none}
+/* 164px: the top controls and the replay row; the reply and map buttons are inside the card. */
+.poster-frame{container-type:inline-size;flex:none;width:min(100%,calc((100svh - 164px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * .529411765));width:min(100%,calc((100dvh - 164px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * .529411765));max-width:400px}
+.card-extras{width:100%;margin:0}
+.card-extras .replay{min-height:44px;margin:0}
+.kid-envelope{--w:max(160px,min(88vw,380px,calc((100svh - 300px) / var(--envelope-ratio))));--w:max(160px,min(88vw,380px,calc((100dvh - 300px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) / var(--envelope-ratio))))} /* 300px leaves room for the heading and the open button */
+.dialog-sound{top:calc(16px + env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));max-width:calc(100vw - 222px);white-space:nowrap}
+.dialog-language{top:calc(12px + env(safe-area-inset-top));right:68px}
+.close{top:calc(16px + env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right))}
+.guest-panel.kid-panel .rsvp-note{overflow-wrap:anywhere}
+
+/* Short portrait screens: compact decoration and spacing, never shrink inputs. */
+@media(max-height:800px){
+  .guest-panel.kid-panel .kp-body{padding-top:24px;padding-bottom:12px}
+  .kp-hero{height:48px;margin-bottom:4px}
+  .guest-panel.kid-panel .guest-kicker{font-size:11px;margin-bottom:4px}
+  .guest-panel.kid-panel h2{font-size:28px}
+  .guest-panel.kid-panel.calendar-panel h2{font-size:32px}
+  .guest-panel.kid-panel.game-panel h2{font-size:28px}
+  .guest-panel.kid-panel .rsvp-note,.guest-panel.kid-panel .calendar-details{margin-bottom:10px}
+  .kp-box{padding:12px}
+  .guest-panel.kid-panel .rsvp-name{margin-bottom:8px}
+  .guest-panel.kid-panel .rsvp-counts{margin-top:8px}
+  .guest-panel.kid-panel .rsvp-submit{margin-top:10px;min-height:44px}
+  .guest-panel.kid-panel .event-calendar th,.guest-panel.kid-panel .event-calendar td{height:26px}
+  .guest-panel.kid-panel .calendar-actions{margin-top:10px}
+  .guest-panel.kid-panel .calendar-actions a.rsvp-submit{min-height:44px;margin:0}
+  .guest-panel.kid-panel .game-open-panel{min-height:44px;margin-top:8px}
+  .guest-panel.kid-panel .game-intro{margin:4px 0 10px}
+}
+@media(max-height:640px){
+  .kp-hero{display:none}
+  .guest-panel.kid-panel .kp-body{padding-top:calc(230 * var(--u));padding-bottom:8px} /* with the reindeer hidden, clear the hanging baubles */
+  .guest-panel.kid-panel .guest-kicker{font-size:10px}
+  .guest-panel.kid-panel h2{font-size:26px}
+  .guest-panel.kid-panel .rsvp-note{font-size:12px}
+  .calendar-panel .guest-kicker{display:none!important}
+  .guest-panel.kid-panel .event-calendar th,.guest-panel.kid-panel .event-calendar td{height:22px}
+  .guest-panel.kid-panel .game-grid{grid-template-columns:repeat(4,minmax(0,1fr));padding:10px 6px;gap:4px}
+  .guest-panel.kid-panel .game-item b{overflow-wrap:anywhere}
+}
+
+/* Short, wide screens (a phone on its side, a small window): everything stays upright and stacked,
+   as on a phone held normally. The card keeps a readable size and the page scrolls to its buttons. */
+@media(min-width:560px) and (max-height:550px){
+  :root{--stage-top:calc(64px + env(safe-area-inset-top));--stage-bottom:calc(10px + env(safe-area-inset-bottom))}
+  .poster-frame{width:min(100%,300px)}
+  .kid-envelope{--w:160px}
+  .envelope-scene .envelope-heading{display:none}
+  .open-letter{min-height:52px;margin-top:14px}
+  .guest-panel.kid-panel .kp-hero{display:none}
+  .guest-panel.kid-panel .kp-body{padding-top:calc(230 * var(--u))}
+}
+@media(max-height:500px){
+  .world .intro{top:19%}
+  html[lang=vi] .world h1,.world h1{font-size:clamp(30px,5vw,46px);margin-top:12px}
+  .world .subtitle{margin-top:10px;font-size:14px}
+  .world .invitation-cue{bottom:5%}
+  .world .footer-place{display:none}
+  .world .cd-unit b{font-size:26px}
+  .world .receive-hint{padding:4px 8px}
+  .world .sleigh-flight{top:42%;width:280px}
+}

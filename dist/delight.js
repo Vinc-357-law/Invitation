@@ -183,10 +183,11 @@
   const pick = $('game-pick'), note = $('game-note'), change = $('game-change'), intro = $('game-intro');
   const items = [...grid.querySelectorAll('.game-item')];
   const ITEM = Object.fromEntries(items.map(button => [button.dataset.item, {get name() { return button.querySelector('b').textContent; }, get meaning() { return button.querySelector('small').textContent; }}]));
-  let choosing = false, tally = null;
+  let choosing = false, tally = null, tallyRequest = 0;
   const myVote = () => { const vote = sheet.store.get('aristia-vote'); return ITEM[vote] ? vote : null; };
 
   function renderGame() {
+    const request = ++tallyRequest;
     const vote = myVote(), showResults = vote && !choosing;
     items.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.item === vote)));
     grid.hidden = !!showResults; intro.hidden = !!showResults; results.hidden = !showResults;
@@ -198,16 +199,20 @@
       return;
     }
     i18n.text(note, 'Đang tải dự đoán của mọi người…');
-    sheet.get({action: 'tally'}).then(data => showTally(data.counts || {}, vote)).catch(() => {
+    sheet.get({action: 'tally'}).then(data => {
+      if (request === tallyRequest && vote === myVote() && !choosing) showTally(data.counts || {}, vote);
+    }).catch(() => {
+      if (request !== tallyRequest) return;
       i18n.text(note, 'Chưa tải được dự đoán của mọi người. Kết quả thật được bật mí trong tiệc tối 20.12.');
     });
   }
   function showTally(counts, vote) {
+    counts = Object.fromEntries(Object.keys(ITEM).map(key => [key, Number.isSafeInteger(counts[key]) && counts[key] >= 0 ? counts[key] : 0]));
     tally = counts;
-    const total = Object.values(counts).reduce((sum, n) => sum + n, 0) || 1;
+    const total = Object.values(counts).reduce((sum, n) => sum + n, 0);
     const rows = Object.keys(ITEM).map(key => ({key, n: counts[key] || 0})).sort((a, b) => b.n - a.n);
     bars.innerHTML = rows.map(({key, n}) => {
-      const share = Math.round(n / total * 100);
+      const share = total ? Math.round(n / total * 100) : 0;
       return `<li class="${key === vote ? 'mine' : ''}"><span class="gb-name">${ITEM[key].name}</span><span class="gb-track"><i style="--p:0%" data-p="${share}%"></i></span><span class="gb-value">${share}%</span></li>`;
     }).join('');
     bars.hidden = false;
@@ -227,7 +232,7 @@
     choosing = false;
     burstFrom(button.getBoundingClientRect(), {count: 46, power: .75});
     renderGame();
-    pick.focus({preventScroll: true});
+    if (stage === 'game' && !overlay.hidden) pick.focus({preventScroll: true});
   }));
   change.addEventListener('click', () => {
     choosing = true; renderGame();
